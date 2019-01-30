@@ -1,0 +1,99 @@
+<div class="bg-light">
+		<div class="col-md-12 p-0 bg-secondary">
+			<div class="p-3">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-1 display-3 text-light">
+							<i class="fa fa-user-circle"></i>
+						</div>
+						<div class="col-md-8 text-light">
+              <table class="mt-1">
+								<tr>
+									<td class="font-weight-bold">Name</td>
+									<td>:</td>
+									<td>{{Identity.first_name}} {{Identity.last_name}}</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold">School</td>
+									<td>:</td>
+									<td>{{Identity.school}}</td>
+								</tr>
+							</table>
+						</div>
+						<div class="offset-md-2 col-md-1 mt-4 mx-auto">
+							<button type="button" class="btn" ng-click="logOut()">Logout</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<div class="container py-1">
+		<div class="col-md-6 mx-auto mt-3">
+			<div class="card mb-4">
+				<div class="card-body">
+						<button type="button" (click)="BackToList()" class="btn btn-secondary border border-right-0 mybtn rounded-0" title="back"><h1 class="fa fa-angle-left mr-2"></h1></button>
+						<h4 class="font-weight-light myTitle border-warning">{{infoTest.title}}</h4>
+					<hr>
+					<div class="row">
+						<div class="col-sm-6 text-center">
+								<div class="display-4 text-info"><i class="fa fa-info-circle"></i></div>
+								<p>{{infoTest.total_questions}} Questions</p>
+						</div>
+						<div class="col-sm-6 text-center">
+								<div class="display-4 text-info"><i class="fa fa-clock-o"></i></div>
+								<p>{{infoTest.time}}</p>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-sm-4">
+							<div class="card text-center">
+								<div class="card-header bg-success text-light">
+									<b>True</b>
+								</div>
+								<div class="card-body">
+									<h4>{{infoTest.true_value}}</h4>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="card text-center">
+								<div class="card-header bg-danger text-light">
+									<b>False</b>
+								</div>
+								<div class="card-body">
+									<h4>{{infoTest.wrong_value}}</h4>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="card text-center">
+								<div class="card-header bg-warning text-dark">
+									<b>Empty</b>
+								</div>
+								<div class="card-body">
+									<h4>{{infoTest.empty_value}}</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							{{infoTest.information}}
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-sm-6">
+							<input type="text" [(ngModel)]="verif.code" class="form-control" placeholder="Verification Code">
+						</div>
+						<div class="col-sm-6">
+							<button type="button" (click)="StartTestProses()" class="btn btn-success form-control">Start</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<small class="text-center fixed-bottom bg-dark text-light">All Rights Already Reserved</small>
+</div>

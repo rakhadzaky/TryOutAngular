@@ -1,0 +1,48 @@
+<div class="bg-light">
+		<div class="col-md-12 p-0 bg-secondary">
+			<div class="p-3">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-1 display-3 text-light">
+							<i class="fa fa-user-circle"></i>
+						</div>
+						<div class="col-md-8 text-light">
+							<table class="mt-1">
+								<tr>
+									<td class="font-weight-bold">Name</td>
+									<td>:</td>
+									<td>{{Identity.first_name}} {{Identity.last_name}}</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold">School</td>
+									<td>:</td>
+									<td>{{Identity.school}}</td>
+								</tr>
+							</table>
+						</div>
+						<div class="offset-md-2 col-md-1 mt-4 mx-auto">
+							<button type="button" class="btn" ng-click="logOut()">Logout</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<div class="container py-1">
+		<div class="row mt-2">
+			<div class="col-md-3" *ngFor = "let e of AllTest, let i = index">
+				<div class="card mt-2">
+					<div class="card-body">
+						<h6 class="font-weight-light">{{e.title}}</h6>
+						<hr>
+						<p class="text-info"><i class="fa fa-info-circle"></i> {{e.total_questions}} Questions</p>
+						<p class="text-info"><i class="fa fa-clock-o"></i> {{e.time}}</p>
+						<p class="badge" ng-class="{'badge-success' : e.status == 'Finish', 'badge-warning' : e.status =='Stand By'}">{{e.status}}</p>
+						<button type="button" class="btn btn-dark float-right" (click) ="DetailTestProses(i)" title="Start"><i class="fa fa-play"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<small class="fixed-bottom bg-dark text-light">All Rights Already Reserved</small>
+</div>

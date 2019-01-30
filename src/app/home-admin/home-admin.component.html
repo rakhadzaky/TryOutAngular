@@ -1,0 +1,141 @@
+<div class="bg-light" ng-init="verif = 'hide'">
+		<div class="col-md-12 p-0 bg-secondary">
+			<div class="p-3">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-1 display-3 text-light">
+							<i class="fa fa-user-circle"></i>
+						</div>
+						<div class="col-md-8 text-light">
+							<table class="mt-1">
+								<tr>
+									<td class="font-weight-bold">Name</td>
+									<td>:</td>
+									<td>{{Identity.name}}</td>
+								</tr>
+							</table>
+						</div>
+						<div class="offset-md-2 col-md-1 mt-4 mx-auto">
+							<button type="button" class="btn" (click)="LogoutUserProses()">Logout</button>
+						</div>\
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<div class="container py-1" ng-init="page = 'participants'">
+			<ul class="nav nav-tabs mt-3" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link" ng-class="{'active' : page == 'participants'}" ng-click="page = 'participants'">Participants</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" ng-class="{'active' : page == 'committe'}" ng-click="page = 'committe'">Committe</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" ng-class="{'active' : page == 'verif'}" ng-click="page = 'verif'">Verification Code</a>
+				</li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div id="menu1" class="container tab-pane" ng-class="{'fade' : page != 'participants', 'active' : page == 'participants'}"><br>
+							<button type="button" class="btn btn-secondary mb-2" ng-click="toPrintAllParticipants()"><i class="fa fa-print"></i></button>
+							<table class="table table-striped table-hover bg-white">
+								<thead class="font-weight-bold bg-secondary text-light">
+									<tr>
+										<td>Id</td>
+										<td>Name</td>
+										<td>Username</td>
+										<td>School</td>
+										<td>Score</td>
+										<td>Action</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor = "let par of AllListPar.data">
+										<td>{{par.id}}</td>
+										<td>{{par.full_name}}</td>
+										<td>{{par.username}}</td>
+										<td>{{par.school}}</td>
+										<td>80</td>
+										<td>
+											<button type="button" class="btn btn-dark" (click)="DetailUserProses(par.id)"><i class="fa fa-search" title="Detail"></i></button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+				</div>
+				<div id="menu1" class="container tab-pane" ng-class="{'fade' : page != 'committe', 'active' : page == 'committe'}"><br>
+							<table class="table table-striped table-hover bg-white">
+								<thead class="font-weight-bold bg-secondary text-light">
+									<tr>
+										<td>Id</td>
+										<td>Name</td>
+										<td>Username</td>
+										<td>Action</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let com of AllListCom.data">
+										<td>{{com.id}}</td>
+										<td>{{com.name}}</td>
+										<td>{{com.username}}</td>
+										<td>
+											<button type="button" class="btn btn-dark"><i class="fa fa-search" title="Detail"></i></button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+				</div>
+				<div id="menu1" class="container tab-pane" ng-class="{'fade' : page != 'verif', 'active' : page == 'verif'}"><br>
+							<button type="button" class="btn btn-secondary mb-2" ng-click="verif = 'show'"><i class="fa fa-plus"></i> Add Verification Code</button>
+							<table class="table table-striped table-hover bg-white table-responsive">
+								<thead class="font-weight-bold bg-secondary text-light">
+									<tr>
+										<td>Id</td>
+										<td>Code</td>
+										<td>Start</td>
+										<td>End</td>
+										<td>Uses</td>
+										<td>Status</td>
+										<td>Action</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-class="{'fade' : verif != 'show'}">
+										<td></td>
+										<td><input type="text" [(ngModel)] = "DataVerif.code" class="form-control"></td>
+										<td><input type="datetime-local" [(ngModel)] = "DataVerif.start" class="form-control"></td>
+										<td><input type="datetime-local" [(ngModel)] = "DataVerif.end" class="form-control"></td>
+										<td>
+											<select name="status" [(ngModel)] = "DataVerif.status" class="form-control">
+												<option value="" selected disabled>Choose</option>
+												<option value="p">Participants</option>
+												<option value="c">Committee</option>
+												<option value="t">Test</option>
+											</select>
+										</td>
+										<td></td>
+										<td>
+											<button type="button" (click)="AddVerifAdm()" class="btn btn-success">Go</button>
+										</td>
+									</tr>
+									<tr *ngFor = "let ListVar of AllListVar">
+										<td>{{ListVar.id}}</td>
+										<td>{{ListVar.code}}</td>
+										<td>{{ListVar.start}}</td>
+										<td>{{ListVar.end}}</td>
+										<td>{{ListVar.status}}</td>
+										<td>Expired</td>
+										<td>
+											<button type="button" class="btn btn-danger" (click)="DeleteDataVerifAdm(ListVar.id)"><i class="fa fa-trash"></i></button>
+											<button type="button" class="btn btn-dark"><i class="fa fa-search" title="Detail"></i></button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+				</div>
+			</div>
+		</div>
+	<small class="text-center fixed-bottom bg-dark text-light">All Rights Already Reserved</small>
+</div>

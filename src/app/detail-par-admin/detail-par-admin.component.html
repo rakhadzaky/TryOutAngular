@@ -1,0 +1,79 @@
+<div class="bg-light">
+		<div class="col-md-12 p-0 bg-secondary">
+			<div class="p-3">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-1 display-3 text-light">
+							<i class="fa fa-user-circle"></i>
+						</div>
+						<div class="col-md-8 text-light">
+              <table class="mt-1">
+								<tr>
+									<td class="font-weight-bold">Name</td>
+									<td>:</td>
+									<td>{{Identity.name}}</td>
+								</tr>
+							</table>
+						</div>
+						<div class="offset-md-2 col-md-1 mt-4 mx-auto">
+							<button type="button" class="btn" ng-click="logOut()">Logout</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<div class="container py-1">
+		<div class="col-md-10 mx-auto mt-3">
+			<div class="card">
+				<div class="card-body">
+						<button type="button" (click)="BackHome()" class="btn btn-secondary border border-right-0 mybtn rounded-0" title="back"><h1 class="fa fa-angle-left mr-2"></h1></button>
+						<h4 class="font-weight-light myTitle border-warning">Detail Participants</h4>
+					<hr>
+					<div class="row">
+						<div class="col-md-4">
+							<label class="font-weight-bold">Id :</label>
+							<p>{{DetailParData.id_ver}}</p>
+						</div>
+						<div class="col-md-4">
+							<label class="font-weight-bold">Name :</label>
+							<p>{{DetailParData.first_name}} {{DetailParData.last_name}}</p>
+						</div>
+						<div class="col-md-4">
+							<label class="font-weight-bold">School</label>
+							<p>{{DetailParData.school}}</p>
+						</div>
+					</div>
+
+					<hr>
+					<br>
+					<h6>List Questions</h6>
+					<table class="table table-striped table-hover mt-2">
+						<thead class="font-weight-bold bg-secondary">
+							<tr>
+								<td>Title</td>
+								<td>Start</td>
+								<td>End</td>
+								<td>Score</td>
+								<td>Action</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Dasar Algoritma Pemrograman Tingkat 1</td>
+								<td>07.30</td>
+								<td>10.30</td>
+								<td>80</td>
+								<td>
+									<button type="button" class="btn btn-dark"><i class="fa fa-search"></i></button>
+									<button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<small class="fixed-bottom bg-dark text-light">All Rights Already Reserved</small>
+</div>

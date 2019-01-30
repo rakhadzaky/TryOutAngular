@@ -1,0 +1,81 @@
+<div ng-controller="LoginController" class="col-md-6 mx-auto myLogin" ng-class="{'col-md-8' : toggle}">
+  <div class="row">
+    <div class="text-light" ng-class="{'col-md-4' : toggle, 'col-md-6' : !toggle}">
+        <h1 class="text-center"><b>Try Out</b> <b class="font-weight-light"> Test</b>
+        <br><small>Website Based</small></h1>
+      <br>
+      <blockquote class="blockquote m-3">
+        <small class="font-weight-normal">Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.</small>
+           ~ Albert Einstein
+      </blockquote>
+    </div>
+    <div ng-class="{'col-md-8' : toggle, 'col-md-6' : !toggle}">
+      <div class="card" id="logIn" ng-class="{'hidden' : toggle}">
+        <div class="card-body">
+          <h4>Log In</h4>
+          <form accept-charset="utf-8">
+            <div class="form-group">
+              <label>Username</label>
+              <input type="text" [(ngModel)]="LoginUserData.username" name="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" [(ngModel)]="LoginUserData.password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" (click)="LoginUserProcess()" class="btn btn-primary">Log In</button>
+            <button type="button" class="btn btn-light" ng-click="toggle = !toggle">Sign Up</button>
+          </form>
+        </div>
+      </div>
+      <div class="card" id="signUp" ng-class="{'hidden' : !toggle}">
+        <div class="card-body">
+          <h4>Sign Up</h4>
+          <form action="" method="" accept-charset="utf-8">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" [(ngModel)] = "Data.first_name" name="signName" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" [(ngModel)] = "Data.last_name" name="signName" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>School</label>
+                  <input type="text" [(ngModel)] = "Data.school" name="signName" class="form-control">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Username</label>
+                  <input type="text" [(ngModel)] = "Data.username" name="signUser" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" [(ngModel)] = "Data.password" name="signPass" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Re-Type Password</label>
+                  <input type="password" [(ngModel)] = "Re_type" name="signReType" class="form-control">
+                  <small class="text-success" *ngIf="Data.password == Re_type && (Data.password != '' && Re_type != '')">
+                    <i class="fa fa-check"></i>
+                  </small>
+                </div>
+                <div class="form-group">
+                  <label>Verification Code</label>
+                  <input type="text" [(ngModel)] = "Data.code" name="signCode" class="form-control">
+                  <small>Verification Code Given by Committe</small>
+                </div>
+              </div>
+            </div>
+            <button type="submit" (click)="RegisterUserProses()" class="btn btn-primary">Sign Up</button>
+            <button type="button" class="btn btn-light" ng-click="toggle = !toggle">Log In</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<small class="fixed-bottom bg-dark text-center text-light">All Rights Already Reserved</small>

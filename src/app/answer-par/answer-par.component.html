@@ -1,0 +1,86 @@
+<body class="bg-light">
+		<div class="col-md-12 p-0 bg-secondary">
+			<div class="p-3">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-1 display-3 text-light">
+							<i class="fa fa-user-circle"></i>
+						</div>
+						<div class="col-md-8 text-light">
+              <table class="mt-1">
+								<tr>
+									<td class="font-weight-bold">Name</td>
+									<td>:</td>
+									<td>{{Identity.first_name}} {{Identity.last_name}}</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold">School</td>
+									<td>:</td>
+									<td>{{Identity.school}}</td>
+								</tr>
+							</table>
+						</div>
+						<div class="offset-md-2 col-md-1 mt-4 mx-auto">
+							<button type="button" class="btn" ng-click="logOut()">Logout</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<div class="container py-1 mt-4">
+		<div class="row">
+			<div class="col-md-8 mb-3">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="text-primary">Soal 1</h4>
+						<hr>
+						<p>{{Question.question}}</p>
+					</div>
+				</div>
+				<div class="col-md-12 mt-4">
+					<div class="card">
+						<div class="card-body">
+							<h4>Answer</h4>
+							<hr>
+							<form action="" class="form-inline" method="get" accept-charset="utf-8">
+								<div class="form-group mr-3" *ngFor="let ans of ListAnswer, let j = index">
+									<input type="radio" name="answer" value="{{j}}" [(ngModel)]="value.answer">
+									<label>{{ans.option}}</label>
+								</div>
+								<hr>
+							</form>
+							<hr>
+							<div class="row">
+								<div class="col-sm-6">
+									<button type="button" class="btn btn-warning" ng-click="">Empty</button>
+									<button type="submit" (click) = "PutAnswerProses()" class="btn btn-dark">Next</button>
+								</div>
+								<div class="col-sm-6">
+									<button type="button" (click) = "FinishProses()" class="btn btn-success float-right" ng-click="finishAnswer()">Finish</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card mb-3">
+					<div class="card-body">
+						<h3 class="text-info"><i class="fa fa-clock-o"></i> 07.30<small class="font-weight-light"> Time Left</small></h3>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-sm-4" *ngFor="let list of ListQuestion, let i = index">
+								<button class="btn text-left form-control mb-2" [ngClass] = "{'btn-success' : list.answer != null, 'btn-warning' : list.answer == null}" type="button">{{i + 1}}<i class="fa fa-caret-right float-right"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<small class="text-center fixed-bottom bg-dark text-light">All Rights Already Reserved</small>
+</body>

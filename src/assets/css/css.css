@@ -1,0 +1,51 @@
+body{
+	font-family: "Roboto-normal";
+	margin : 0;
+}
+a{
+	color: unset;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+	color: unset;
+}
+.mydisplay{
+	display: block;
+}
+.mynotdisplay{
+	display: none;
+}
+.myLogin{
+	margin-top: 100px;
+	overflow: hidden;
+}
+.myTitle{
+	border-left: 2px solid;
+	padding-left: 5px;
+}
+.card{
+	transition : 0.3s ease;
+}
+.card.hidden{
+	height: 0;
+	opacity: 0!important;
+}
+.mybtn{
+	background-color: white;
+	color: black;
+	position: absolute;
+	width: 30px;
+	transition : 0.3s ease;
+	margin-left: -50px;
+	margin-right: 10px;
+	margin-top: -10px;
+	z-index: 0;
+	cursor: pointer;
+}
+.mybtn:hover{
+	width: 50px;
+	margin-left: -70px;
+	color: white;
+	transition : 0.3s ease;
+}

@@ -1,0 +1,100 @@
+<div class="bg-light">
+		<div class="col-md-12 p-0 bg-secondary">
+			<div class="p-3">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-1 display-3 text-light">
+							<i class="fa fa-user-circle"></i>
+						</div>
+						<div class="col-md-8 text-light">
+              <table class="mt-1">
+								<tr>
+									<td class="font-weight-bold">Name</td>
+									<td>:</td>
+									<td>{{Identity.name}}</td>
+								</tr>
+                <tr>
+									<td class="font-weight-bold">Username</td>
+									<td>:</td>
+									<td>{{Identity.username}}</td>
+								</tr>
+							</table>
+						</div>
+						<div class="offset-md-2 col-md-1 mt-4 mx-auto">
+							<button type="button" class="btn" ng-click="logOut()">Logout</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<div class="container py-1 mt-3">
+			<div class="col-md-10 mx-auto mb-4">
+				<div class="card" id="general">
+					<div class="card-body">
+						<a href="HomeCommittee"><button type="button" class="btn btn-secondary border border-right-0 mybtn rounded-0" title="back"><h1 class="fa fa-angle-left mr-2"></h1></button></a>
+						<h4 class="font-weight-light myTitle border-warning">General</h4>
+						<hr>
+						<form accept-charset="utf-8">
+							<div class="form-group">
+								<label>Title</label>
+								<input type="text" class="form-control" [(ngModel)] = "InsertValue.title" name="title">
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Start</label>
+										<input type="text" class="form-control w-50" [(ngModel)] = "InsertValue.start" name="start">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Finish</label>
+										<input type="text" class="form-control w-50" [(ngModel)] = "InsertValue.end" name="end">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Duration</label>
+										<input type="text" class="form-control w-50" [(ngModel)] = "InsertValue.duration" name="end">
+									</div>
+								</div>
+							</div>
+							<hr>
+							<div class="form-group">
+								<label class="mb-4">Informations</label>
+
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label class="badge badge-success">True Value</label>
+											<input type="number" class="form-control" [(ngModel)] = "InsertValue.true_value" name="true">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label class="badge badge-danger">False Value</label>
+											<input type="number" class="form-control" [(ngModel)] = "InsertValue.wrong_value" name="false">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label class="badge badge-warning">Empty Value</label>
+											<input type="number" class="form-control" [(ngModel)] = "InsertValue.empty_value" name="empty">
+										</div>
+									</div>
+								</div>
+								<textarea id="informations" class="form-control" [(ngModel)] = "InsertValue.information" name="info"></textarea>
+							</div>
+							<button type="button" (click) = "InsertTestProses()" class="btn btn-success float-right">Next</button>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	<small class="fixed-bottom text-center bg-dark text-light">All Rights Already Reserved</small>
+	<script>
+		CKEDITOR.replace('informations');
+		CKEDITOR.replace('content');
+	</script>
+</div>
