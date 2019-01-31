@@ -13,6 +13,9 @@
       <div class="card" id="logIn" ng-class="{'hidden' : toggle}">
         <div class="card-body">
           <h4>Log In</h4>
+          <div class="alert alert-danger" *ngIf = "err != ''">
+            <b>Error</b> Username or Password is wrong
+          </div>
           <form accept-charset="utf-8">
             <div class="form-group">
               <label>Username</label>
@@ -36,24 +39,29 @@
                 <div class="form-group">
                   <label>First Name</label>
                   <input type="text" [(ngModel)] = "Data.first_name" name="signName" class="form-control">
+                  <small class="text-danger">{{err_first_name}}</small>
                 </div>
                 <div class="form-group">
                   <label>Last Name</label>
                   <input type="text" [(ngModel)] = "Data.last_name" name="signName" class="form-control">
+                  <small class="text-danger">{{err_last_name}}</small>
                 </div>
                 <div class="form-group">
                   <label>School</label>
                   <input type="text" [(ngModel)] = "Data.school" name="signName" class="form-control">
+                  <small class="text-danger">{{err_school}}</small>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Username</label>
                   <input type="text" [(ngModel)] = "Data.username" name="signUser" class="form-control">
+                  <small class="text-danger">{{err_username}}</small>
                 </div>
                 <div class="form-group">
                   <label>Password</label>
                   <input type="password" [(ngModel)] = "Data.password" name="signPass" class="form-control">
+                  <small class="text-danger">{{err_password}}</small>
                 </div>
                 <div class="form-group">
                   <label>Re-Type Password</label>
@@ -65,6 +73,7 @@
                 <div class="form-group">
                   <label>Verification Code</label>
                   <input type="text" [(ngModel)] = "Data.code" name="signCode" class="form-control">
+                  <small class="text-danger">{{err_code}}</small><br>
                   <small>Verification Code Given by Committe</small>
                 </div>
               </div>

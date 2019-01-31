@@ -13,6 +13,12 @@ export class LoginCommitteeComponent implements OnInit {
   Data = {}
   Re_type = ''
   regis = {}
+  err = ''
+  err_regis = ''
+  err_username = ''
+  err_code = ''
+  err_name = ''
+  err_password = ''
   constructor(private _auth : AuthService, private _router : Router) { }
 
   ngOnInit() {
@@ -26,7 +32,11 @@ export class LoginCommitteeComponent implements OnInit {
           localStorage.setItem('token', res.token)
           this._router.navigate(['/HomeCommittee'])
         },
-        err => console.log(err)
+        err => {
+          console.log(err)
+          this.err = err.error.error
+          console.log(err.error.error)
+        }
       )
   }
 
@@ -37,7 +47,14 @@ export class LoginCommitteeComponent implements OnInit {
           this.regis = res
           console.log(this.regis)
         },
-        err => console.log(err)
+        err => {
+          console.log(err)
+          this.err_regis = err.error.message
+          this.err_username = err.error.errors.username
+          this.err_code = err.error.errors.code
+          this.err_name = err.error.errors.name
+          this.err_password = err.error.errors.password
+        }
       )
   }
 

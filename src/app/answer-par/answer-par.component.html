@@ -74,7 +74,7 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-sm-4" *ngFor="let list of ListQuestion, let i = index">
-								<button class="btn text-left form-control mb-2" [ngClass] = "{'btn-success' : list.answer != null, 'btn-warning' : list.answer == null}" type="button">{{i + 1}}<i class="fa fa-caret-right float-right"></i></button>
+								<button class="btn text-left form-control mb-2" (click) = "ChangeQuestion(i)" [ngClass] = "{'btn-success' : list.answer != null, 'btn-warning' : list.answer == null}" type="button">{{i + 1}}<i class="fa fa-caret-right float-right"></i></button>
 							</div>
 						</div>
 					</div>

@@ -15,6 +15,13 @@ export class LoginParticipantsComponent implements OnInit {
   Data = {}
   Re_type = ''
   regis = {}
+  err = ''
+  err_username = ''
+  err_code = ''
+  err_first_name = ''
+  err_last_name = ''
+  err_school = ''
+  err_password = ''
   ngOnInit() {
   }
 
@@ -25,7 +32,10 @@ export class LoginParticipantsComponent implements OnInit {
           localStorage.setItem('token', res.token)
           this.router.navigate(['/HomeParticipants'])
         },
-        err => console.log(err)
+        err => {
+          console.log(err)
+          this.err = err.error.error
+        }
       )
   }
 
@@ -36,7 +46,15 @@ export class LoginParticipantsComponent implements OnInit {
           this.regis = res
           console.log(this.regis)
         },
-        err => console.log(err)
+        err => {
+          console.log(err)          
+          this.err_username = err.error.errors.username
+          this.err_code = err.error.errors.code
+          this.err_first_name = err.error.errors.first_name
+          this.err_last_name = err.error.errors.last_name
+          this.err_password = err.error.errors.password
+          this.err_school = err.error.errors.school
+        }
       )
   }
 
