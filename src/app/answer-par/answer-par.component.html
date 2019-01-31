@@ -33,7 +33,7 @@
 			<div class="col-md-8 mb-3">
 				<div class="card">
 					<div class="card-body">
-						<h4 class="text-primary">Soal 1</h4>
+						<h4 class="text-primary">Soal {{VarNumber}}</h4>
 						<hr>
 						<p>{{Question.question}}</p>
 					</div>
@@ -45,7 +45,9 @@
 							<hr>
 							<form action="" class="form-inline" method="get" accept-charset="utf-8">
 								<div class="form-group mr-3" *ngFor="let ans of ListAnswer, let j = index">
-									<input type="radio" name="answer" value="{{j}}" [(ngModel)]="value.answer">
+									<div *ngIf="ans.id == Question.answer.id; then thenBlock else elseBlock"></div>
+									<ng-template #thenBlock><input type="radio" name="answer" value="{{j}}" [(ngModel)]="value.answer" checked></ng-template>
+									<ng-template #elseBlock><input type="radio" name="answer" value="{{j}}" [(ngModel)]="value.answer"></ng-template>
 									<label>{{ans.option}}</label>
 								</div>
 								<hr>

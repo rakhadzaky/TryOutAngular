@@ -32,7 +32,7 @@ export class HomeParticipantsService {
     // 'Content-Type' : 'application/x-www-form-urlencoded'
   }
   id = localStorage.getItem('idTest')
-  id_quest = localStorage.getItem('number_quest')
+  // id_quest = localStorage.getItem('number_quest')
   body ={}
   constructor(private http: HttpClient) { }
 
@@ -62,16 +62,16 @@ export class HomeParticipantsService {
   AnswerGetAllQuestions(){
     return this.http.get<any>(this._testUrl + "/" + this.id + this._getAllQuestions, {headers: this.token_test})
   }
-  AnswerGetQuestion(){
-    return this.http.get<any>(this._testUrl + "/" + this.id + this._getAllQuestions + "/" + this.id_quest, {headers: this.token_test})
+  AnswerGetQuestion(id_quest){
+    return this.http.get<any>(this._testUrl + "/" + this.id + this._getAllQuestions + "/" + id_quest, {headers: this.token_test})
   }
-  AnswerGetAnswer(){
+  AnswerGetAnswer(id_quest){
     console.log(this.token_test)
-    return this.http.get<any>(this._testUrl + "/" + this.id + this._getAllQuestions + "/" + this.id_quest + this._putAnswer, {headers: this.token_test})
+    return this.http.get<any>(this._testUrl + "/" + this.id + this._getAllQuestions + "/" + id_quest + this._putAnswer, {headers: this.token_test})
   }
-  AnswerPutAnswer(data){
+  AnswerPutAnswer(data,id_quest){
     console.log(data)
-    return this.http.post<any>(this._testUrl + "/" + this.id + this._getAllQuestions + "/" + this.id_quest + this._putAnswer, data, {headers: this.token_test})
+    return this.http.post<any>(this._testUrl + "/" + this.id + this._getAllQuestions + "/" + id_quest + this._putAnswer, data, {headers: this.token_test})
   }
   FinishAnswer(){
     console.log(this.token_test)

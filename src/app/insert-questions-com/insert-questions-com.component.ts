@@ -48,7 +48,8 @@ export class InsertQuestionsComComponent implements OnInit {
           console.log(res)
           this.GetAllDataQuestions()
           localStorage.removeItem('idQuestionsAns')
-          let data = this.TableQuestions.length -1
+          let data = this.TableQuestions.length
+          console.log(data)
           localStorage.setItem('idQuestionsAns', data.toString())
         },
         err => console.log(err)
@@ -61,6 +62,7 @@ export class InsertQuestionsComComponent implements OnInit {
         res => {
           console.log(res)
           this.GetAnswerData()
+          this.GetAllDataQuestions()
         },
         err => console.log(err)
       )

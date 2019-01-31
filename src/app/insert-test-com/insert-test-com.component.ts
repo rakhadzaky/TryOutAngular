@@ -12,6 +12,9 @@ export class InsertTestComComponent implements OnInit {
   Identity = {}
   InsertValue = {}
   Date = ''
+
+  array = []
+  length = ''
   constructor(private _router: Router, private _homeCommitteeService: HomeCommitteeService) { }
 
   ngOnInit() {
@@ -31,6 +34,19 @@ export class InsertTestComComponent implements OnInit {
         res => {
           this.InsertValue = res
           console.log(this.InsertValue)
+          this.GetArray()
+          localStorage.setItem('detailTest', this.length)
+        },
+        err => console.log(err)
+      )
+  }
+
+  GetArray(){
+    this._homeCommitteeService.getAllQuestions()
+      .subscribe(
+        res => {
+          this.array = res
+          this.length = this.array.length.toString()
         },
         err => console.log(err)
       )

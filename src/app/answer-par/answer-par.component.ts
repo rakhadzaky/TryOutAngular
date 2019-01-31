@@ -14,6 +14,7 @@ export class AnswerParComponent implements OnInit {
   Question = {}
   value = {}
   ListAnswer = []
+  VarNumber = ''
   constructor(private _router: Router, private _homeParcipantsService : HomeParticipantsService) { }
 
   ngOnInit() {
@@ -26,6 +27,8 @@ export class AnswerParComponent implements OnInit {
         err => console.log(err)
       )
 
+    this.setNumber()
+
     this.GetListQuestions()
 
     this.GetListAnswer()
@@ -34,8 +37,23 @@ export class AnswerParComponent implements OnInit {
 
   }
 
+  setNumber(){
+    this.VarNumber = localStorage.getItem('number_quest')
+    console.log(this.VarNumber)
+  }
+
+  ChangeQuestion(id){
+    localStorage.removeItem('number_quest')
+    localStorage.setItem('number_quest', id)
+    console.log(localStorage.getItem('number_quest'))
+    this.setNumber()
+    this.GetListQuestions()
+    this.GetQuestion()
+    this.GetListAnswer()
+  }
+
   GetQuestion(){
-    this._homeParcipantsService.AnswerGetQuestion()
+    this._homeParcipantsService.AnswerGetQuestion(localStorage.getItem('number_quest'))
       .subscribe(
         res => {
           this.Question = res
@@ -46,7 +64,7 @@ export class AnswerParComponent implements OnInit {
   }
 
   GetListAnswer(){
-    this._homeParcipantsService.AnswerGetAnswer()
+    this._homeParcipantsService.AnswerGetAnswer(localStorage.getItem('number_quest'))
       .subscribe(
         res => {
           this.ListAnswer = res
@@ -68,12 +86,14 @@ export class AnswerParComponent implements OnInit {
   }
 
   PutAnswerProses(){
-    this._homeParcipantsService.AnswerPutAnswer(this.value)
+    this._homeParcipantsService.AnswerPutAnswer(this.value, localStorage.getItem('number_quest'))
       .subscribe(
         res => {
           console.log(res)
           let number = localStorage.getItem('number_quest')
-          number = number + 1
+          let int_number = parseInt(number)
+          int_number = int_number++
+          number = int_number.toString()
           localStorage.removeItem('number_quest')
           localStorage.setItem('number_quest', number)
           this.GetListQuestions()
@@ -82,14 +102,6 @@ export class AnswerParComponent implements OnInit {
         },
         err => console.log(err)
       )
-  }
-
-  ChangeQuestion(id){
-    localStorage.removeItem('number_quest')
-    localStorage.setItem('number_quest', id)
-    this.GetListQuestions()
-    this.GetQuestion()
-    this.GetListAnswer()
   }
 
   FinishProses(){
