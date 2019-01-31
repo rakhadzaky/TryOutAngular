@@ -40,4 +40,10 @@ export class HomeParticipantsComponent implements OnInit {
     this._router.navigate(['/InfoQuestion'])
   }
 
+  LogoutParProses(){
+    this._homeParcipantsService.getLogoutParProses()
+    localStorage.removeItem('token')
+    this._router.navigate(['/login'])
+  }
+
 }

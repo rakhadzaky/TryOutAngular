@@ -12,6 +12,7 @@ export class InfoQuestionParComponent implements OnInit {
   infoTest = {}
   Identity = {}
   verif = {}
+  err_start = ''
   constructor(private _router : Router, private _homeParcipantsService : HomeParticipantsService) { }
 
   ngOnInit() {
@@ -40,6 +41,7 @@ export class InfoQuestionParComponent implements OnInit {
   }
 
   StartTestProses(){
+    this.err_start = ''
     console.log(this.verif)
     this._homeParcipantsService.startTestPar(this.verif)
       .subscribe(
@@ -48,7 +50,11 @@ export class InfoQuestionParComponent implements OnInit {
           localStorage.setItem('number_quest', '0')
           this._router.navigate(['/AnswerTime'])
         },
-        err => console.log(err)
+        err => {
+          console.log(err)
+          this.err_start = err.error.message
+          this.err_start = err.error.erros.code
+        }
       )
   }
 

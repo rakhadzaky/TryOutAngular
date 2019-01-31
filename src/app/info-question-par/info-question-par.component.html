@@ -86,6 +86,7 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<input type="text" [(ngModel)]="verif.code" class="form-control" placeholder="Verification Code">
+							<small class="text-danger">{{err_start}}</small>
 						</div>
 						<div class="col-sm-6">
 							<button type="button" (click)="StartTestProses()" class="btn btn-success form-control">Start</button>

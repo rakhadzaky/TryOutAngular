@@ -8,6 +8,8 @@ export class HomeParticipantsService {
 
   private _baseUrl = "http://to.tritontelkom.id"
 
+  private _logoutPar = this._baseUrl + "/api/par/logout"
+
   private _detailPar = this._baseUrl + "/api/par/detail"
   private _testUrl = this._baseUrl + "/api/par/test"
   private _startUrl = "/start"
@@ -36,6 +38,10 @@ export class HomeParticipantsService {
 
   getDetailPar(){
     return this.http.get<any>(this._detailPar, {headers: this.token})
+  }
+
+  getLogoutParProses(){
+    return this.http.get<any>(this._LogoutPar, {headers: this.token})
   }
 
   getAllQuestions(){

@@ -97,6 +97,9 @@ export class AnswerParComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res)
+          localStorage.removeItem('idTest')
+          localStorage.removeItem('number_quest')
+          localStorage.removeItem('token_start')
           this._router.navigate(['/HomeParticipants'])
         },
         err => console.log(err)
