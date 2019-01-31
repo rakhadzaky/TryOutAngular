@@ -89,6 +89,12 @@
 				</div>
 				<div id="menu1" class="container tab-pane" ng-class="{'fade' : page != 'verif', 'active' : page == 'verif'}"><br>
 							<button type="button" class="btn btn-secondary mb-2" ng-click="verif = 'show'"><i class="fa fa-plus"></i> Add Verification Code</button>
+							<div class="alert alert-danger" *ngIf = "err_verif != '' || err_verif_delete">
+								{{err_verif}}{{err_verif_delete}}
+							</div>
+							<div class="alert alert-success" *ngIf = "res_verif_delete != '' || res_verif != ''">
+								{{res_verif_delete}}{{res_verif}}
+							</div>
 							<table class="table table-striped table-hover bg-white table-responsive">
 								<thead class="font-weight-bold bg-secondary text-light">
 									<tr>
@@ -104,9 +110,9 @@
 								<tbody>
 									<tr ng-class="{'fade' : verif != 'show'}">
 										<td></td>
-										<td><input type="text" [(ngModel)] = "DataVerif.code" class="form-control"></td>
-										<td><input type="datetime-local" [(ngModel)] = "DataVerif.start" class="form-control"></td>
-										<td><input type="datetime-local" [(ngModel)] = "DataVerif.end" class="form-control"></td>
+										<td><input type="text" [(ngModel)] = "DataVerif.code" class="form-control"><small class="text-danger">{{err_verif_code}}</small></td>
+										<td><input type="text" [(ngModel)] = "DataVerif.start" class="form-control"><small class="text-danger">{{err_verif_start}}</small></td>
+										<td><input type="text" [(ngModel)] = "DataVerif.end" class="form-control"><small class="text-danger">{{err_verif_end}}</small></td>
 										<td>
 											<select name="status" [(ngModel)] = "DataVerif.status" class="form-control">
 												<option value="" selected disabled>Choose</option>
@@ -114,13 +120,14 @@
 												<option value="c">Committee</option>
 												<option value="t">Test</option>
 											</select>
+											<small class="text-danger">{{err_verif_status}}</small>
 										</td>
 										<td></td>
 										<td>
 											<button type="button" (click)="AddVerifAdm()" class="btn btn-success">Go</button>
 										</td>
 									</tr>
-									<tr *ngFor = "let ListVar of AllListVar">
+									<tr *ngFor = "let ListVar of AllListVar, let v = index">
 										<td>{{ListVar.id}}</td>
 										<td>{{ListVar.code}}</td>
 										<td>{{ListVar.start}}</td>
@@ -128,7 +135,7 @@
 										<td>{{ListVar.status}}</td>
 										<td>Expired</td>
 										<td>
-											<button type="button" class="btn btn-danger" (click)="DeleteDataVerifAdm(ListVar.id)"><i class="fa fa-trash"></i></button>
+											<button type="button" class="btn btn-danger" (click)="DeleteDataVerifAdm(v)"><i class="fa fa-trash"></i></button>
 											<button type="button" class="btn btn-dark"><i class="fa fa-search" title="Detail"></i></button>
 										</td>
 									</tr>

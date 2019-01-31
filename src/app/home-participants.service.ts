@@ -41,7 +41,7 @@ export class HomeParticipantsService {
   }
 
   getLogoutParProses(){
-    return this.http.get<any>(this._LogoutPar, {headers: this.token})
+    return this.http.get<any>(this._logoutPar, {headers: this.token})
   }
 
   getAllQuestions(){

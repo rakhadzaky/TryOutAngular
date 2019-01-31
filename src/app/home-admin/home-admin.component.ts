@@ -16,6 +16,18 @@ export class HomeAdminComponent implements OnInit {
   AllListVar = []
   // idVerif={}
   DataVerif={}
+
+  res_verif = ''
+
+  res_verif_delete = ''
+
+  err_verif = ''
+  err_verif_code = ''
+  err_verif_end = ''
+  err_verif_start = ''
+  err_verif_status = ''
+
+  err_verif_delete = ''
   constructor(private _homeAdminService: HomeAdminService, private _router: Router) { }
 
   ngOnInit() {
@@ -56,14 +68,31 @@ export class HomeAdminComponent implements OnInit {
   }
 
   AddVerifAdm(){
+    this.res_verif_delete = ''
+    this.err_verif_delete = ''
+    this.res_verif = ''
+    this.err_verif = ''
+    this.err_verif_code = ''
+    this.err_verif_end = ''
+    this.err_verif_start = ''
+    this.err_verif_status = ''
     console.log('in AddVerifAdm')
     this._homeAdminService.AddVerifAdmData(this.DataVerif)
       .subscribe(
         res=>{
           this.ListDataVerif()
-          console.log("Add Verif Success")
+          console.log(res)
+          this.res_verif = res.message
         },
-        err=>console.log(err)
+        err=>{
+          console.log(err)
+          this.err_verif = err.error.message
+          this.err_verif_code = err.error.errors.code
+          this.err_verif_start = err.error.errors.start
+          this.err_verif_end = err.error.errors.end
+          this.err_verif_status = err.error.errors.status
+
+        }
       )
   }
 
@@ -82,12 +111,21 @@ export class HomeAdminComponent implements OnInit {
 
   DeleteDataVerifAdm(id){
     console.log(id)
+    this.res_verif = ''
+    this.err_verif = ''
+    this.res_verif_delete = ''
+    this.err_verif_delete = ''
     this._homeAdminService.DeleteVerAdm(id)
       .subscribe(
         res => {
+          console.log(res)
+          this.res_verif_delete = res.message
           this.ListDataVerif()
         },
-        err => console.log(err)
+        err => {
+          console.log(err)
+          this.err_verif_delete = err.error.message
+        }
       )
   }
 
