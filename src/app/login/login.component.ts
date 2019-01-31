@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     this._auth.LoginUser(this.LoginUserData)
       .subscribe(
         res => {
+          console.log('test')
           localStorage.setItem('token', res.token)
           this._router.navigate(['/HomeAdmin'])
         },

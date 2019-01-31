@@ -9,6 +9,7 @@ import { HomeCommitteeComponent } from './home-committee/home-committee.componen
 import { InsertTestComComponent } from './insert-test-com/insert-test-com.component';
 import { InsertQuestionsComComponent } from './insert-questions-com/insert-questions-com.component';
 import { DetailQuesionComponent } from './detail-quesion/detail-quesion.component';
+import { DetailParComComponent } from './detail-par-com/detail-par-com.component';
 
 import { LoginParticipantsComponent } from './login-participants/login-participants.component';
 import { HomeParticipantsComponent } from './home-participants/home-participants.component';
@@ -61,6 +62,11 @@ const routes: Routes = [
   {
     path: 'DetailQuestion',
     component: DetailQuesionComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'DetailParticipants',
+    component: DetailParComComponent,
     canActivate: [AuthGuard]
   },
   // PARTICIPANTS

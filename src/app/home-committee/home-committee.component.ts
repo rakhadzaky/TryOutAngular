@@ -12,6 +12,8 @@ export class HomeCommitteeComponent implements OnInit {
 
   Identity = {}
   ListQuestions = []
+  ListPar = []
+  ListResult = []
   constructor(private _homeCommitteeService: HomeCommitteeService, private _router: Router) { }
 
   ngOnInit() {
@@ -32,6 +34,23 @@ export class HomeCommitteeComponent implements OnInit {
         },
         err => console.log(err)
       )
+
+    this._homeCommitteeService.getAllPar()
+      .subscribe(
+        res=>{
+          this.ListPar = res
+          console.log(this.ListPar)
+        },
+        err => console.log(err)
+      )
+    this._homeCommitteeService.getAllResult()
+      .subscribe(
+        res=>{
+          this.ListResult = res
+          console.log(this.ListResult)
+        },
+        err => console.log(err)
+      )
   }
 
   DetailTestCom(id){
@@ -47,6 +66,13 @@ export class HomeCommitteeComponent implements OnInit {
         res => console.log(res),
         err => console.log(err)
       )
+  }
+
+  DetailParCom(id){
+    console.log(id)
+    localStorage.removeItem('idDetail')
+    localStorage.setItem('idDetail', id)
+    this._router.navigate(['/DetailParticipants'])
   }
 
   LogoutComProses(){

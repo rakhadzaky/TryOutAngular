@@ -22,6 +22,7 @@ import { InsertQuestionsComComponent } from './insert-questions-com/insert-quest
 import { DetailQuesionComponent } from './detail-quesion/detail-quesion.component';
 import { InfoQuestionParComponent } from './info-question-par/info-question-par.component';
 import { AnswerParComponent } from './answer-par/answer-par.component';
+import { DetailParComComponent } from './detail-par-com/detail-par-com.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AnswerParComponent } from './answer-par/answer-par.component';
     InsertQuestionsComComponent,
     DetailQuesionComponent,
     InfoQuestionParComponent,
-    AnswerParComponent
+    AnswerParComponent,
+    DetailParComComponent
   ],
   imports: [
     BrowserModule,

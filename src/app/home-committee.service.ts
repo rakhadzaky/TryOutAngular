@@ -6,7 +6,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeCommitteeService {
 
-  private _baseUrl = "http://to.tritontelkom.id"
+  // private _baseUrl = "http://to.tritontelkom.id"
+  private _baseUrl = "http://192.16.123.254:8000"
+
+  private _GetParUrl = this._baseUrl + "/api/com/par"
+  private _GetResultUrl = this._baseUrl + "/api/com/par/results"
+  private _GetDetailParUrl = this._baseUrl + "/api/com/par/"
 
   private _ListQuestionsUrl = this._baseUrl + "/api/com/tests"
   private _DetailAkunCom =  this._baseUrl + "/api/com/detail"
@@ -30,6 +35,16 @@ export class HomeCommitteeService {
   id = localStorage.getItem('detailTest')
   idQuest = localStorage.getItem('idQuestionsAns')
   constructor(private http: HttpClient) { }
+
+  getAllPar(){
+    return this.http.get<any>(this._GetParUrl, {headers: this.token})
+  }
+  getAllResult(){
+    return this.http.get<any>(this._GetResultUrl, {headers: this.token})
+  }
+  getDetailPar(id){
+    return this.http.get<any>(this._GetDetailParUrl + id, {headers: this.token})
+  }
 
   getAllQuestions(){
     return this.http.get<any>(this._ListQuestionsUrl, {headers : this.token})
