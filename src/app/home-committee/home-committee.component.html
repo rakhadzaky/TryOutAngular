@@ -59,7 +59,7 @@
 							</div>
 						</div>
 					</div>
-					<div ng-init="Pagination(CurrentPage, ListQuestions)">
+					<!-- <div ng-init="Pagination(CurrentPage, ListQuestions)">
 						<ul class="pagination justify-content-center mt-4" ng-if="TotalPage > 1">
 							<li class="page-item" ng-class="{'disabled' : CurrentPage == 1}"><a class="page-link" href="#" ng-click="Pagination(CurrentPage - 1, ListQuestions)">Previous</a></li>
 							<div ng-repeat="n in NumberOfPage">
@@ -67,7 +67,7 @@
 							</div>
 							<li class="page-item" ng-class="{'disabled' : CurrentPage == TotalPage}"><a class="page-link" href="#" ng-click="Pagination(CurrentPage + 1, ListQuestions)">Next</a></li>
 						</ul>
-					</div>
+					</div> -->
 				</div>
 				<div id="menu1" class="container tab-pane" ng-class="{'fade' : page != 'participants', 'active' : page == 'participants'}"><br>
 							<button type="button" class="btn btn-secondary mb-2" ng-click="toPrintAllParticipants()"><i class="fa fa-print"></i></button>

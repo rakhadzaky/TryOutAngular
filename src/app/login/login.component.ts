@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
         res => {
           console.log('test')
           localStorage.setItem('token', res.token)
-          this._router.navigate(['/HomeAdmin'])
+          // this._router.navigate(['/HomeAdmin'])
+          window.location.href = '/HomeAdmin'
         },
         err => console.log(err)
       )

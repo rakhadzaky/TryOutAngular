@@ -57,7 +57,8 @@ export class HomeCommitteeComponent implements OnInit {
     console.log(id)
     localStorage.removeItem('detailTest')
     localStorage.setItem('detailTest', id)
-    this._router.navigate(['/InsertQuestions'])
+    // this._router.navigate(['/InsertQuestions'])
+    window.location.href = '/InsertQuestions'
   }
 
   DeleteTestProses(id){
@@ -78,7 +79,8 @@ export class HomeCommitteeComponent implements OnInit {
   LogoutComProses(){
     this._homeCommitteeService.getLogoutComProses()
     localStorage.removeItem('token')
-    this._router.navigate(['/login'])
+    // this._router.navigate(['/login'])
+    window.location.href = '/login'
   }
 
 }

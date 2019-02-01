@@ -38,4 +38,11 @@ export class DetailParComComponent implements OnInit {
     this._router.navigate(['/HomeCommittee'])
   }
 
+  LogoutComProses(){
+    this._homeCommitteeService.getLogoutComProses()
+    localStorage.removeItem('token')
+    // this._router.navigate(['/login'])
+    window.location.href = '/login'
+  }
+
 }

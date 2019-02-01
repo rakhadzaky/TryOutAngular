@@ -15,6 +15,16 @@ export class InsertTestComComponent implements OnInit {
 
   array = []
   length = ''
+
+  // error variable
+  err_message = ''
+  err_empty_value = ''
+  err_true_value = ''
+  err_wrong_value = ''
+  err_end = ''
+  err_start = ''
+  err_title = ''
+  err_information = ''
   constructor(private _router: Router, private _homeCommitteeService: HomeCommitteeService) { }
 
   ngOnInit() {
@@ -36,8 +46,19 @@ export class InsertTestComComponent implements OnInit {
           console.log(this.InsertValue)
           this.GetArray()
           localStorage.setItem('detailTest', this.length)
+          window.location.href = '/HomeCommittee'
         },
-        err => console.log(err)
+        err => {
+          console.log(err)
+          this.err_message = err.error.message
+          this.err_end = err.error.errors.end
+          this.err_start = err.error.errors.start
+          this.err_title = err.error.errors.title
+          this.err_true_value = err.error.errors.true_value
+          this.err_empty_value = err.error.errors.empty_value
+          this.err_wrong_value = err.error.errors.wrong_value
+          this.err_information = err.error.errors.information
+        }
       )
   }
 

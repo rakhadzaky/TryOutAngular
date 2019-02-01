@@ -30,7 +30,8 @@ export class LoginCommitteeComponent implements OnInit {
       .subscribe(
         res => {
           localStorage.setItem('token', res.token)
-          this._router.navigate(['/HomeCommittee'])
+          // this._router.navigate(['/HomeCommittee'])
+          window.location.href = '/HomeCommittee'
         },
         err => {
           console.log(err)

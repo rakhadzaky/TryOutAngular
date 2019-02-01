@@ -37,7 +37,8 @@ export class HomeParticipantsComponent implements OnInit {
     localStorage.removeItem('idTest')
     localStorage.setItem('idTest', id)
     console.log(id)
-    this._router.navigate(['/InfoQuestion'])
+    // this._router.navigate(['/InfoQuestion'])
+    window.location.href = '/InfoQuestion'
   }
 
   LogoutParProses(){

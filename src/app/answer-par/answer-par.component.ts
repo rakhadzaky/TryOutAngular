@@ -38,7 +38,10 @@ export class AnswerParComponent implements OnInit {
   }
 
   setNumber(){
-    this.VarNumber = localStorage.getItem('number_quest')
+    let no = localStorage.getItem('number_quest')
+    let number = parseInt(no)
+    number = number + 1
+    this.VarNumber = number.toString()
     console.log(this.VarNumber)
   }
 

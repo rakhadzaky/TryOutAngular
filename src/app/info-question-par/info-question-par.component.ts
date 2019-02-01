@@ -37,7 +37,8 @@ export class InfoQuestionParComponent implements OnInit {
 
   BackToList(){
     localStorage.removeItem('idTest')
-    this._router.navigate(['/HomeParticipants'])
+    // this._router.navigate(['/HomeParticipants'])
+    window.location.href = '/HomeParticipants'
   }
 
   StartTestProses(){
@@ -48,7 +49,8 @@ export class InfoQuestionParComponent implements OnInit {
         res => {
           localStorage.setItem('token_start', res.token)
           localStorage.setItem('number_quest', '0')
-          this._router.navigate(['/AnswerTime'])
+          // this._router.navigate(['/AnswerTime'])
+          window.location.href = 'AnswerTime'
         },
         err => {
           console.log(err)

@@ -43,20 +43,26 @@
 						<div class="card-body">
 							<h4>Answer</h4>
 							<hr>
-							<form action="" class="form-inline" method="get" accept-charset="utf-8">
-								<div class="form-group mr-3">
+							<form action="" method="get" accept-charset="utf-8">
+								<div class="row">
 									<!-- <div *ngIf="ans.id == Question.answer.id; then thenBlock else elseBlock"></div>
 									<ng-template #thenBlock><input type="radio" name="answer" value="{{j}}" [(ngModel)]="value.answer" checked></ng-template>
 									<ng-template #elseBlock><input type="radio" name="answer" value="{{j}}" [(ngModel)]="value.answer"></ng-template>
 									<label>{{ans.option}}</label> -->
 									<!-- <input type="radio" name="answer" value="{{j}}" [(ngModel)]="value.answer" checked>
 									{{ans.option}} -->
-									<select class="form-control" name="answer" [(ngModel)] = "value.answer">
-										<option value="">Empty</option>
-										<option value="{{j}}" *ngFor="let ans of ListAnswer, let j = index">{{j+1}}. {{ans.option}}</option>
-									</select>
+									<div class="col-md-10 row">
+										<div class="col-md-4" *ngFor="let jaw of ListAnswer, let no = index">
+											<p>{{no + 1}}). {{jaw.option}}</p>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<select class="form-control" name="answer" [(ngModel)] = "value.answer">
+											<option value="" selected>Empty</option>
+											<option value="{{j}}" *ngFor="let ans of ListAnswer, let j = index">{{j+1}}</option>
+										</select>
+									</div>
 								</div>
-								<hr>
 							</form>
 							<hr>
 							<div class="row">
