@@ -44,15 +44,17 @@
 							<h4>Answer</h4>
 							<hr>
 							<form action="" class="form-inline" method="get" accept-charset="utf-8">
-								<div class="form-group mr-3" >
+								<div class="form-group mr-3">
 									<!-- <div *ngIf="ans.id == Question.answer.id; then thenBlock else elseBlock"></div>
 									<ng-template #thenBlock><input type="radio" name="answer" value="{{j}}" [(ngModel)]="value.answer" checked></ng-template>
 									<ng-template #elseBlock><input type="radio" name="answer" value="{{j}}" [(ngModel)]="value.answer"></ng-template>
 									<label>{{ans.option}}</label> -->
-									<!-- <select class="form-control" name="answer" [(ngModel)] = "value.answer" value="Question.answer.id" multiple>
+									<!-- <input type="radio" name="answer" value="{{j}}" [(ngModel)]="value.answer" checked>
+									{{ans.option}} -->
+									<select class="form-control" name="answer" [(ngModel)] = "value.answer">
 										<option value="">Empty</option>
 										<option value="{{j}}" *ngFor="let ans of ListAnswer, let j = index">{{j+1}}. {{ans.option}}</option>
-									</select> -->
+									</select>
 								</div>
 								<hr>
 							</form>

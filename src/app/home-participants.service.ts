@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeParticipantsService {
 
-  // private _baseUrl = "http://to.tritontelkom.id"
-  private _baseUrl = "http://192.16.123.254:8000"
+  private _baseUrl = "http://to.tritontelkom.id"
+  // private _baseUrl = "http://192.16.123.254:8000"
 
   private _logoutPar = this._baseUrl + "/api/par/logout"
 
