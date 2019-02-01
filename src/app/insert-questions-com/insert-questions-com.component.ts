@@ -57,7 +57,7 @@ export class InsertQuestionsComComponent implements OnInit {
   }
 
   AddAnswerProses(){
-    this._homeCommitteeService.AddDataAnswer(this.AnswerData)
+    this._homeCommitteeService.AddDataAnswer(this.AnswerData, localStorage.getItem('idQuestionsAns'))
       .subscribe(
         res => {
           console.log(res)

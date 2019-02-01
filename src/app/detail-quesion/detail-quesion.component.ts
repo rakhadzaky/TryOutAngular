@@ -71,7 +71,23 @@ export class DetailQuesionComponent implements OnInit {
   DeleteAnswerProses(id){
     this._homeCommitteeService.DeleteDataAnswer(id)
       .subscribe(
-        res => console.log(res),
+        res => {
+          console.log(res)
+          this.GetQuestions()
+          this.GetAnswerRecord()
+        },
+        err => console.log(err)
+      )
+  }
+
+  AddAnswerProses(){
+    this._homeCommitteeService.AddDataAnswer(this.AnswerData, localStorage.getItem('idQuestionsAns'))
+      .subscribe(
+        res => {
+          console.log(res)
+          this.GetQuestions()
+          this.GetAnswerRecord()
+        },
         err => console.log(err)
       )
   }

@@ -79,9 +79,10 @@ export class HomeCommitteeService {
     console.log(id)
     return this.http.delete<any>(this._DetailTest + this.id + this._DataQuestions + "/" + id, {headers: this.tokenPut})
   }
-  AddDataAnswer(data){
+  AddDataAnswer(data, idQuest){
     console.log(data)
-    return this.http.post<any>(this._DetailTest + this.id + this._DataQuestions + "/" + this.idQuest + this._DataAnswer, data, {headers: this.token})
+    console.log(idQuest)
+    return this.http.post<any>(this._DetailTest + this.id + this._DataQuestions + "/" + idQuest + this._DataAnswer, data, {headers: this.token})
   }
   DeleteDataAnswer(id){
     console.log(id)
