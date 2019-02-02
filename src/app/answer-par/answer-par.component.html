@@ -51,12 +51,13 @@
 									<label>{{ans.option}}</label> -->
 									<!-- <input type="radio" name="answer" value="{{j}}" [(ngModel)]="value.answer" checked>
 									{{ans.option}} -->
-									<div class="col-md-10 row">
+									<div class="col-md-9 row">
 										<div class="col-md-4" *ngFor="let jaw of ListAnswer, let no = index">
 											<p>{{no + 1}}). {{jaw.option}}</p>
 										</div>
 									</div>
-									<div class="col-md-2">
+									<div class="col-md-3">
+										<label>Your Answer</label>
 										<select class="form-control" name="answer" [(ngModel)] = "value.answer">
 											<option value="" selected>Empty</option>
 											<option value="{{j}}" *ngFor="let ans of ListAnswer, let j = index">{{j+1}}</option>
@@ -68,10 +69,10 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<!-- <button type="button" class="btn btn-warning" ng-click="">Empty</button> -->
-									<button type="submit" (click) = "PutAnswerProses()" class="btn btn-dark">Submit</button>
+
 								</div>
 								<div class="col-sm-6">
-									<button type="button" (click) = "FinishProses()" class="btn btn-success float-right" ng-click="finishAnswer()">Finish</button>
+									<button type="submit" (click) = "PutAnswerProses()" class="btn btn-dark float-right">Submit</button>
 								</div>
 							</div>
 						</div>
@@ -82,6 +83,12 @@
 				<div class="card mb-3">
 					<div class="card-body">
 						<h3 class="text-info"><i class="fa fa-clock-o"></i> 07.30<small class="font-weight-light"> Time Left</small></h3>
+					</div>
+				</div>
+				<div class="card mb-3">
+					<div class="card-body">
+						<button type="button" class="form-control btn btn-success" (click)="FinishProses()" name="button">Finish</button>
+						<small class="text-danger">Click this button only if you sure want to finish the test</small>
 					</div>
 				</div>
 				<div class="card">

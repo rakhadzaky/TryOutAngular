@@ -44,7 +44,8 @@ export class HomeParticipantsComponent implements OnInit {
   LogoutParProses(){
     this._homeParcipantsService.getLogoutParProses()
     localStorage.removeItem('token')
-    this._router.navigate(['/login'])
+    // this._router.navigate(['/login'])
+    window.location.href = "/login"
   }
 
 }

@@ -12,6 +12,7 @@ export class HomeCommitteeService {
   private _GetParUrl = this._baseUrl + "/api/com/par"
   private _GetResultUrl = this._baseUrl + "/api/com/par/results"
   private _GetDetailParUrl = this._baseUrl + "/api/com/par/"
+  private _GetChangePage = this._baseUrl + "/api/com/par?page="
 
   private _ListQuestionsUrl = this._baseUrl + "/api/com/tests"
   private _DetailAkunCom =  this._baseUrl + "/api/com/detail"
@@ -47,6 +48,9 @@ export class HomeCommitteeService {
   }
   getDetailParResult(id){
     return this.http.get<any>(this._GetResultUrl + "/" + id, {headers: this.token})
+  }
+  getParChangePage(id){
+    return this.http.get<any>(this._GetChangePage + id, {headers: this.token})
   }
 
   getAllQuestions(){

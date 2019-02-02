@@ -17,6 +17,11 @@ export class HomeCommitteeComponent implements OnInit {
 
   res_delete = ''
   err_delete = ''
+
+  // pagination
+  page_now = ''
+  page_end = ''
+
   constructor(private _homeCommitteeService: HomeCommitteeService, private _router: Router) { }
 
   ngOnInit() {
@@ -30,20 +35,47 @@ export class HomeCommitteeComponent implements OnInit {
       )
 
     this.GetAllQuestions()
+    this.GetAllParList()
+  }
 
+  GetAllParList(){
     this._homeCommitteeService.getAllPar()
       .subscribe(
         res=>{
           this.ListPar = res
           console.log(this.ListPar)
+          this.page_now = res.meta.current_page
+          this.page_end = res.meta.last_page
         },
         err => console.log(err)
       )
-      this._homeCommitteeService.getAllResult()
+  }
+
+  GetAllParListNext(id){
+    let number = parseInt(id)
+    number = number + 1
+    this._homeCommitteeService.getParChangePage(number)
       .subscribe(
         res=>{
-          this.ListResult = res
-          console.log(this.ListResult)
+          this.ListPar = res
+          console.log(this.ListPar)
+          this.page_now = res.meta.current_page
+          this.page_end = res.meta.last_page
+        },
+        err => console.log(err)
+      )
+  }
+
+  GetAllParListPrev(id){
+    let number = parseInt(id)
+    number = number - 1
+    this._homeCommitteeService.getParChangePage(number)
+      .subscribe(
+        res=>{
+          this.ListPar = res
+          console.log(this.ListPar)
+          this.page_now = res.meta.current_page
+          this.page_end = res.meta.last_page
         },
         err => console.log(err)
       )

@@ -34,7 +34,7 @@
 					<a class="nav-link" href="" ng-class="{'active' : page == 'questions'}" ng-click="page = 'questions'">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" ng-class="{'active' : page == 'participants'}" ng-click="page = 'participants'">Participants</a>
+					<a class="nav-link" href="" ng-class="{'active' : page == 'participants'}" ng-click="page = 'participants'">Participants</a>
 				</li>
 			</ul>
 
@@ -71,10 +71,15 @@
 				</div>
 				<div id="menu1" class="container tab-pane" ng-class="{'fade' : page != 'participants', 'active' : page == 'participants'}"><br>
 							<button type="button" class="btn btn-secondary mb-2" ng-click="toPrintAllParticipants()"><i class="fa fa-print"></i></button>
+							<ul class="pagination justify-content-end float-right">
+								<li class="page-item" (click)="GetAllParListPrev(page_now)" [ngClass] = "{'disabled' : page_now == '1'}"><a class="page-link">Previous</a></li>
+								<li class="page-item disabled"><a class="page-link">{{page_now}} / {{page_end}}</a></li>
+								<li class="page-item" (click)="GetAllParListNext(page_now)" [ngClass] = "{'disabled' : page_now == page_end}"><a class="page-link">Next</a></li>
+							</ul>
 							<table class="table table-striped table-hover bg-white">
 								<thead class="font-weight-bold bg-secondary text-light">
 									<tr>
-										<td>Id</td>
+										<td>No</td>
 										<td>Name</td>
 										<td>Username</td>
 										<td>School</td>
@@ -83,7 +88,7 @@
 								</thead>
 								<tbody>
 									<tr *ngFor = "let par of ListPar.data, let j = index">
-										<td>{{par.id}}</td>
+										<td>{{j + 1}}</td>
 										<td>{{par.full_name}}</td>
 										<td>{{par.username}}</td>
 										<td>{{par.school}}</td>
