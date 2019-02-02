@@ -113,7 +113,14 @@ export class InsertQuestionsComComponent implements OnInit {
   GetDetailQuestion(data){
     localStorage.removeItem('idQuestionsAns')
     localStorage.setItem('idQuestionsAns', data)
-    this._router.navigate(['/DetailQuestion'])
+    // this._router.navigate(['/DetailQuestion'])
+    window.location.href = "/DetailQuestion"
+  }
+
+  BackToHome(){
+    localStorage.removeItem('detailTest')
+    // this._router.navigate(['/InsertQuestions'])
+    window.location.href = '/HomeCommittee'
   }
 
 }

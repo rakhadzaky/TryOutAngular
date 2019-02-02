@@ -38,11 +38,11 @@
           <div class="row">
 						<div class="col-md-4">
 							<label class="font-weight-bold">Id :</label>
-							<p>{{DetailParData.id}}</p>
+							<p>{{DetailParData.id_participant}}</p>
 						</div>
 						<div class="col-md-4">
 							<label class="font-weight-bold">Name :</label>
-							<p>{{DetailParData.first_name}} {{DetailParData.last_name}}</p>
+							<p>{{DetailParData.name}}</p>
 						</div>
 						<div class="col-md-4">
 							<label class="font-weight-bold">School</label>
@@ -65,10 +65,10 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>Dasar Algoritma Pemrograman Tingkat 1</td>
-								<td>07.30</td>
-								<td>10.30</td>
-								<td>80</td>
+								<td>{{DetailParData.title}}</td>
+								<td>{{DetailParData.start}}</td>
+								<td>{{DetailParData.end}}</td>
+								<td>{{DetailParData.score}}</td>
 								<td>
 									<button type="button" class="btn btn-dark"><i class="fa fa-search"></i></button>
 									<button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>

@@ -14,6 +14,9 @@ export class HomeCommitteeComponent implements OnInit {
   ListQuestions = []
   ListPar = []
   ListResult = []
+
+  res_delete = ''
+  err_delete = ''
   constructor(private _homeCommitteeService: HomeCommitteeService, private _router: Router) { }
 
   ngOnInit() {
@@ -26,14 +29,7 @@ export class HomeCommitteeComponent implements OnInit {
         err => console.log(err)
       )
 
-    this._homeCommitteeService.getAllQuestions()
-      .subscribe(
-        res => {
-          this.ListQuestions = res
-          console.log(this.ListQuestions)
-        },
-        err => console.log(err)
-      )
+    this.GetAllQuestions()
 
     this._homeCommitteeService.getAllPar()
       .subscribe(
@@ -43,11 +39,22 @@ export class HomeCommitteeComponent implements OnInit {
         },
         err => console.log(err)
       )
-    this._homeCommitteeService.getAllResult()
+      this._homeCommitteeService.getAllResult()
       .subscribe(
         res=>{
           this.ListResult = res
           console.log(this.ListResult)
+        },
+        err => console.log(err)
+      )
+  }
+
+  GetAllQuestions(){
+    this._homeCommitteeService.getAllQuestions()
+      .subscribe(
+        res => {
+          this.ListQuestions = res
+          console.log(this.ListQuestions)
         },
         err => console.log(err)
       )
@@ -64,8 +71,16 @@ export class HomeCommitteeComponent implements OnInit {
   DeleteTestProses(id){
     this._homeCommitteeService.DeleteTestCom(id)
       .subscribe(
-        res => console.log(res),
-        err => console.log(err)
+        res => {
+          console.log(res)
+          this.GetAllQuestions()
+          // this.res_delete = res.message
+        },
+        err => {
+          console.log(err)
+          this.GetAllQuestions()
+          // this.err_delete = err.error.message
+        }
       )
   }
 

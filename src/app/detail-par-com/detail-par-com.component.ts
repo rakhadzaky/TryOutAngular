@@ -22,12 +22,11 @@ export class DetailParComComponent implements OnInit {
         },
         err => console.log(err)
       )
-
-    this._homeCommitteeService.getDetailPar(localStorage.getItem('idDetail'))
+    this._homeCommitteeService.getDetailParResult(localStorage.getItem('idDetail'))
       .subscribe(
         res => {
+          console.log(res)
           this.DetailParData = res
-          console.log(this.DetailParData)
         },
         err => console.log(err)
       )
@@ -35,7 +34,8 @@ export class DetailParComComponent implements OnInit {
 
   BackToList(){
     localStorage.removeItem('idDetail')
-    this._router.navigate(['/HomeCommittee'])
+    // this._router.navigate(['/HomeCommittee'])
+    window.location.href = '/HomeCommittee'
   }
 
   LogoutComProses(){

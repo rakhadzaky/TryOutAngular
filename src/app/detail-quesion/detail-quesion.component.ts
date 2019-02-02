@@ -43,7 +43,8 @@ export class DetailQuesionComponent implements OnInit {
 
   BackToQuestions(){
     localStorage.removeItem('idQuestionsAns')
-    this._router.navigate(['/InsertQuestions'])
+    // this._router.navigate(['/InsertQuestions'])
+    window.location.href = '/InsertQuestions'
   }
 
   GetAnswerRecord(){
