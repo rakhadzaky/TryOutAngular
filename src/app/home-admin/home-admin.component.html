@@ -40,6 +40,11 @@
 			<div class="tab-content">
 				<div id="menu1" class="container tab-pane" ng-class="{'fade' : page != 'participants', 'active' : page == 'participants'}"><br>
 							<button type="button" class="btn btn-secondary mb-2" ng-click="toPrintAllParticipants()"><i class="fa fa-print"></i></button>
+							<ul class="pagination justify-content-end float-right">
+								<li class="page-item" (click)="GetAllParListPrev(page_now_par)" [ngClass] = "{'disabled' : page_now_par == '1'}"><a class="page-link">Previous</a></li>
+								<li class="page-item disabled"><a class="page-link">{{page_now_par}} / {{page_end_par}}</a></li>
+								<li class="page-item" (click)="GetAllParListNext(page_now_par)" [ngClass] = "{'disabled' : page_now_par == page_end_par}"><a class="page-link">Next</a></li>
+							</ul>
 							<table class="table table-striped table-hover bg-white">
 								<thead class="font-weight-bold bg-secondary text-light">
 									<tr>
@@ -66,6 +71,11 @@
 							</table>
 				</div>
 				<div id="menu1" class="container tab-pane" ng-class="{'fade' : page != 'committe', 'active' : page == 'committe'}"><br>
+					<ul class="pagination justify-content-end float-right">
+						<li class="page-item" (click)="GetAllComListPrev(page_now_com)" [ngClass] = "{'disabled' : page_now_com == '1'}"><a class="page-link">Previous</a></li>
+						<li class="page-item disabled"><a class="page-link">{{page_now_com}} / {{page_end_com}}</a></li>
+						<li class="page-item" (click)="GetAllComListNext(page_now_com)" [ngClass] = "{'disabled' : page_now_com == page_end_com}"><a class="page-link">Next</a></li>
+					</ul>
 							<table class="table table-striped table-hover bg-white">
 								<thead class="font-weight-bold bg-secondary text-light">
 									<tr>
@@ -89,6 +99,11 @@
 				</div>
 				<div id="menu1" class="container tab-pane" ng-class="{'fade' : page != 'verif', 'active' : page == 'verif'}"><br>
 							<button type="button" class="btn btn-secondary mb-2" ng-click="verif = 'show'"><i class="fa fa-plus"></i> Add Verification Code</button>
+							<ul class="pagination justify-content-end float-right">
+								<li class="page-item" (click)="GetAllVerListPrev(page_now_ver)" [ngClass] = "{'disabled' : page_now_ver == '1'}"><a class="page-link">Previous</a></li>
+								<li class="page-item disabled"><a class="page-link">{{page_now_ver}} / {{page_end_ver}}</a></li>
+								<li class="page-item" (click)="GetAllVerListNext(page_now_ver)" [ngClass] = "{'disabled' : page_now_ver == page_end_ver}"><a class="page-link">Next</a></li>
+							</ul>
 							<div class="alert alert-danger" *ngIf = "err_verif != '' || err_verif_delete">
 								{{err_verif}}{{err_verif_delete}}
 							</div>

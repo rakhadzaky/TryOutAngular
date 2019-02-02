@@ -28,6 +28,13 @@ export class HomeAdminComponent implements OnInit {
   err_verif_status = ''
 
   err_verif_delete = ''
+
+  // Pagination
+  page_now_par = ''
+  page_end_par = ''
+
+  page_now_com = ''
+  page_end_com = ''
   constructor(private _homeAdminService: HomeAdminService, private _router: Router) { }
 
   ngOnInit() {
@@ -45,6 +52,8 @@ export class HomeAdminComponent implements OnInit {
         res => {
           this.AllListCom = res
           console.log(this.AllListCom)
+          this.page_now_com = res.meta.current_page
+          this.page_end_com = res.meta.last_page
         },
         err => console.log(err)
       )
@@ -54,11 +63,72 @@ export class HomeAdminComponent implements OnInit {
         res => {
           this.AllListPar = res
           console.log(this.AllListPar)
+          this.page_now_par = res.meta.current_page
+          this.page_end_par = res.meta.last_page
         },
         err => console.log(err)
       )
 
     this.ListDataVerif()
+  }
+
+  GetAllParListNext(id){
+    let number = parseInt(id)
+    number = number + 1
+    this._homeAdminService.getParChangePage(number)
+    .subscribe(
+      res=>{
+        this.AllListCom = res
+        console.log(this.AllListPar)
+        this.page_now_par = res.meta.current_page
+        this.page_end_par = res.meta.last_page
+      },
+      err => console.log(err)
+    )
+  }
+
+  GetAllParListPrev(id){
+    let number = parseInt(id)
+    number = number - 1
+    this._homeAdminService.getParChangePage(number)
+    .subscribe(
+      res=>{
+        this.AllListPar = res
+        console.log(this.AllListPar)
+        this.page_now_par = res.meta.current_page
+        this.page_end_par = res.meta.last_page
+      },
+      err => console.log(err)
+    )
+  }
+
+  GetAllComListNext(id){
+    let number = parseInt(id)
+    number = number + 1
+    this._homeAdminService.getComChangePage(number)
+    .subscribe(
+      res=>{
+        this.AllListCom = res
+        console.log(this.AllListCom)
+        this.page_now_com = res.meta.current_page
+        this.page_end_com = res.meta.last_page
+      },
+      err => console.log(err)
+    )
+  }
+  GetAllComListPrev(id){
+    let number = parseInt(id)
+    number = number - 1
+    this._homeAdminService.getComChangePage(number)
+    .subscribe(
+      res=>{
+        this.AllListCom = res
+        console.log(this.AllListCom)
+        this.page_now_com = res.meta.current_page
+        this.page_end_com = res.meta.last_page
+      },
+      err => console.log(err)
+    )
   }
 
   DetailUserProses(id){
