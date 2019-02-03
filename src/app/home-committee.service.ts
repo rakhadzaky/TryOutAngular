@@ -38,7 +38,7 @@ export class HomeCommitteeService {
   constructor(private http: HttpClient) { }
 
   getAllPar(){
-    return this.http.get<any>(this._GetParUrl, {headers: this.token})
+    return this.http.get<any>(this._GetResultUrl, {headers: this.token})
   }
   getAllResult(){
     return this.http.get<any>(this._GetResultUrl, {headers: this.token})

@@ -99,11 +99,11 @@
 				</div>
 				<div id="menu1" class="container tab-pane" ng-class="{'fade' : page != 'verif', 'active' : page == 'verif'}"><br>
 							<button type="button" class="btn btn-secondary mb-2" ng-click="verif = 'show'"><i class="fa fa-plus"></i> Add Verification Code</button>
-							<ul class="pagination justify-content-end float-right">
+							<!-- <ul class="pagination justify-content-end float-right">
 								<li class="page-item" (click)="GetAllVerListPrev(page_now_ver)" [ngClass] = "{'disabled' : page_now_ver == '1'}"><a class="page-link">Previous</a></li>
 								<li class="page-item disabled"><a class="page-link">{{page_now_ver}} / {{page_end_ver}}</a></li>
 								<li class="page-item" (click)="GetAllVerListNext(page_now_ver)" [ngClass] = "{'disabled' : page_now_ver == page_end_ver}"><a class="page-link">Next</a></li>
-							</ul>
+							</ul> -->
 							<div class="alert alert-danger" *ngIf = "err_verif != '' || err_verif_delete">
 								{{err_verif}}{{err_verif_delete}}
 							</div>
@@ -126,8 +126,8 @@
 									<tr ng-class="{'fade' : verif != 'show'}">
 										<td></td>
 										<td><input type="text" [(ngModel)] = "DataVerif.code" class="form-control"><small class="text-danger">{{err_verif_code}}</small></td>
-										<td><input type="text" [(ngModel)] = "DataVerif.start" class="form-control"><small class="text-danger">{{err_verif_start}}</small></td>
-										<td><input type="text" [(ngModel)] = "DataVerif.end" class="form-control"><small class="text-danger">{{err_verif_end}}</small></td>
+										<td><input type="datetime-local" [(ngModel)] = "DataVerif.start" class="form-control"><small class="text-danger">{{err_verif_start}}</small></td>
+										<td><input type="datetime-local" [(ngModel)] = "DataVerif.end" class="form-control"><small class="text-danger">{{err_verif_end}}</small></td>
 										<td>
 											<select name="status" [(ngModel)] = "DataVerif.status" class="form-control">
 												<option value="" selected disabled>Choose</option>
