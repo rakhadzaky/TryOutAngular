@@ -15,6 +15,10 @@ export class AnswerParComponent implements OnInit {
   value = {}
   ListAnswer = []
   VarNumber = ''
+
+  timeAlert : ''
+  timeLeft: number = 60;
+  interval;
   constructor(private _router: Router, private _homeParcipantsService : HomeParticipantsService) { }
 
   ngOnInit() {
@@ -35,6 +39,21 @@ export class AnswerParComponent implements OnInit {
 
     this.GetQuestion()
 
+    this.startTimer()
+
+  }
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+        if(this.timeLeft <= 20){
+          this.timeAlert = "20 second left"
+        }
+      } else {
+        this.FinishProses()
+      }
+    },1000)
   }
 
   setNumber(){
@@ -115,7 +134,8 @@ export class AnswerParComponent implements OnInit {
           localStorage.removeItem('idTest')
           localStorage.removeItem('number_quest')
           localStorage.removeItem('token_start')
-          this._router.navigate(['/HomeParticipants'])
+          // this._router.navigate(['/HomeParticipants'])
+          window.location.href = '/HomeParticipants'
         },
         err => console.log(err)
       )
