@@ -18,7 +18,8 @@ export class AnswerParComponent implements OnInit {
   VarNumber = ''
 
   timeAlert = ''
-  timeLeft: number = 1000;
+  timeLeft: number = 0;
+  timeLeftView: number[] = [0,0,0];
   interval;
 
   time = []
@@ -46,6 +47,12 @@ export class AnswerParComponent implements OnInit {
             this.time_end = this.time[4].split(":")
             this.TimeNow = formatDate(this.DateNow, 'HH:mm:ss', 'en-US', '+0700').split(":")
             this.timeLeft = parseInt((parseInt(this.TimeNow[0])*3600) + (parseInt(this.TimeNow[1])*60) + parseInt(this.TimeNow[2]) - (parseInt(this.time_end[0])*3600) + (parseInt(this.time_end[1])*60) + parseInt(this.time_end[2]))
+            this.timeLeftView[0] = Math.round(this.timeLeft / 3600)
+            this.timeLeft = this.timeLeft % 3600
+            this.timeLeftView[1] = Math.round(this.timeLeft / 60)
+            this.timeLeft = this.timeLeft % 60
+            this.timeLeftView[2] = Math.round(this.timeLeft)
+            this.startTimer()
             console.log(this.TimeNow)
             console.log(this.time_end)
           },
@@ -60,18 +67,23 @@ export class AnswerParComponent implements OnInit {
 
     this.GetQuestion()
 
-    this.startTimer()
-
   }
 
   startTimer() {
     this.interval = setInterval(() => {
-      if(this.timeLeft > 0) {
-        this.timeLeft--;
-        if(this.timeLeft <= 20){
+      if(this.timeLeftView[2] > 0) {
+        this.timeLeftView[2]--
+        if(this.timeLeftView[2] <= 20 && this.timeLeftView[1] == 0 && this.timeLeftView[0] == 0){
           this.timeAlert = "20 second left"
         }
-      } else {
+      }else if(this.timeLeftView[1] > 0){
+        this.timeLeftView[1]--
+        this.timeLeftView[2] = 59
+      }else if(this.timeLeftView[0] > 0){
+        this.timeLeftView[0]--
+        this.timeLeftView[1] = 59
+        this.timeLeftView[2] = 59
+      }else {
         window.alert("Times Up !!")
         this.FinishProses()
       }
