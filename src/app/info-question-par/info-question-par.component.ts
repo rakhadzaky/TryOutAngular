@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeParticipantsService } from '../home-participants.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-info-question-par',
   templateUrl: './info-question-par.component.html',
-  styleUrls: ['./info-question-par.component.css']
+  styleUrls: ['./info-question-par.component.css'],
 })
 export class InfoQuestionParComponent implements OnInit {
 
@@ -13,6 +14,12 @@ export class InfoQuestionParComponent implements OnInit {
   Identity = {}
   verif = {}
   err_start = ''
+
+  time = []
+  time_end = []
+
+  DateNow = new Date()
+  TimeNow = []
   constructor(private _router : Router, private _homeParcipantsService : HomeParticipantsService) { }
 
   ngOnInit() {
@@ -30,6 +37,14 @@ export class InfoQuestionParComponent implements OnInit {
         res => {
           this.infoTest = res
           console.log(this.infoTest)
+          this.time = res.time.split(" ")
+          console.log(this.time[4])
+          this.time_end = this.time[4].split(":")
+          this.TimeNow = formatDate(this.DateNow, 'HH:mm:ss', 'en-US', '+0700').split(":")
+          console.log(this.TimeNow)
+          console.log((parseInt(this.TimeNow[0])*3600) + (parseInt(this.TimeNow[1])*60) + parseInt(this.TimeNow[2]) - (parseInt(this.time_end[0])*3600) + (parseInt(this.time_end[1])*60) + parseInt(this.time_end[2]))
+          console.log(this.time_end)
+          console.log(this.TimeNow[2] - this.time_end[2])
         },
         err => console.log(err)
       )

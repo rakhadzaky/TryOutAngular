@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeParticipantsService } from '../home-participants.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-answer-par',
@@ -16,9 +17,15 @@ export class AnswerParComponent implements OnInit {
   ListAnswer = []
   VarNumber = ''
 
-  timeAlert : ''
-  timeLeft: number = 60;
+  timeAlert = ''
+  timeLeft: number = 1000;
   interval;
+
+  time = []
+  time_end = []
+
+  DateNow = new Date()
+  TimeNow = []
   constructor(private _router: Router, private _homeParcipantsService : HomeParticipantsService) { }
 
   ngOnInit() {
@@ -30,6 +37,20 @@ export class AnswerParComponent implements OnInit {
         },
         err => console.log(err)
       )
+
+      this._homeParcipantsService.getDetailTestPar()
+        .subscribe(
+          res => {
+            this.time = res.time.split(" ")
+            console.log(this.time[4])
+            this.time_end = this.time[4].split(":")
+            this.TimeNow = formatDate(this.DateNow, 'HH:mm:ss', 'en-US', '+0700').split(":")
+            this.timeLeft = parseInt((parseInt(this.TimeNow[0])*3600) + (parseInt(this.TimeNow[1])*60) + parseInt(this.TimeNow[2]) - (parseInt(this.time_end[0])*3600) + (parseInt(this.time_end[1])*60) + parseInt(this.time_end[2]))
+            console.log(this.TimeNow)
+            console.log(this.time_end)
+          },
+          err => console.log(err)
+        )
 
     this.setNumber()
 
@@ -51,6 +72,7 @@ export class AnswerParComponent implements OnInit {
           this.timeAlert = "20 second left"
         }
       } else {
+        window.alert("Times Up !!")
         this.FinishProses()
       }
     },1000)
