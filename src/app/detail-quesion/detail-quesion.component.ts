@@ -48,7 +48,7 @@ export class DetailQuesionComponent implements OnInit {
   }
 
   GetAnswerRecord(){
-    this._homeCommitteeService.GetDataAnswerQuest()
+    this._homeCommitteeService.GetDataAnswerQuest(localStorage.getItem('idQuestionsAns'))
       .subscribe(
         res => {
           this.AnswerRecord = res
@@ -77,7 +77,11 @@ export class DetailQuesionComponent implements OnInit {
           this.GetQuestions()
           this.GetAnswerRecord()
         },
-        err => console.log(err)
+        err => {
+          console.log(err)
+          this.GetQuestions()
+          this.GetAnswerRecord()
+        }
       )
   }
 

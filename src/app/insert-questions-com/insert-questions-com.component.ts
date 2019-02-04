@@ -57,6 +57,7 @@ export class InsertQuestionsComComponent implements OnInit {
   }
 
   AddAnswerProses(){
+    console.log(localStorage.getItem('idQuestionsAns') + "in controller")
     this._homeCommitteeService.AddDataAnswer(this.AnswerData, localStorage.getItem('idQuestionsAns'))
       .subscribe(
         res => {
@@ -81,7 +82,7 @@ export class InsertQuestionsComComponent implements OnInit {
 
   GetAnswerData(){
     if (localStorage.getItem('idQuestionsAns') != ''){
-      this._homeCommitteeService.GetDataAnswerQuest()
+      this._homeCommitteeService.GetDataAnswerQuest(localStorage.getItem('idQuestionsAns'))
         .subscribe(
           res => {
             this.AnswerRecord = res
@@ -96,7 +97,7 @@ export class InsertQuestionsComComponent implements OnInit {
 
   CleanidQuestionAns(){
     localStorage.removeItem('idQuestionsAns')
-    this.GetAnswerData()
+    this.AnswerRecord = []
   }
 
   DeleteQuestionProses(id){

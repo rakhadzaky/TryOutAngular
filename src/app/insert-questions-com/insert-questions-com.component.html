@@ -34,7 +34,7 @@
 					<div class="card-body">
 						<button type="button" (click) = "BackToHome()" class="btn btn-secondary border border-right-0 mybtn rounded-0" title="back"><h1 class="fa fa-angle-left mr-2"></h1></button>
 						<div class="form-group">
-							<label class="font-weight-bold">Questions Title</label> <div class="badge badge-info">Draft</div>
+							<label class="font-weight-bold">Questions Title</label>
 							<p>{{TestData.title}}</p>
 						</div>
 						<div class="row">
@@ -53,7 +53,7 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label class="font-weight-bold">Number of Questions</label>
-									<p>100</p>
+									<p>{{TableQuestions.length}}</p>
 								</div>
 							</div>
 						</div>
@@ -97,13 +97,13 @@
 								</div>
 							</div>
 						</div>
-						<button type="button" class="btn btn-warning font-weight-bold">Stand By</button>
+						<!-- <button type="button" class="btn btn-warning font-weight-bold">Stand By</button> -->
 						<button type="button" class="btn btn-dark float-right" ng-click="modal = 'show'"><i class="fa fa-plus"></i> Add Question</button>
 						<br style="clear: both">
 						<hr>
 						<div class="font-weight-bold text-center">List of Questions</div>
 						<br>
-						<table class="table table-hover table-striped table-responsive">
+						<table class="table table-hover table-striped table-responsive w-100">
 							<thead class="bg-dark text-light">
 								<tr>
 									<td>Id</td>
@@ -117,14 +117,8 @@
 								<tr *ngFor = "let table of TableQuestions, let i = index">
 									<td>{{table.id}}</td>
 									<td>
-										<div class="badge badge-dark">
-											<a href="" title="">Gambar1.jpg</a>
-										</div>
-										<div class="badge badge-dark">
-											26060416_10156...
-										</div>
-										<div class="badge badge-dark">
-											Gambar1.jpg
+										<div class="badge badge-dark" *ngFor = "let image of TableQuestions.images">
+											<a href="" title="">{{image.file_name}}</a>
 										</div>
 									</td>
 									<td>{{table.question}}</td>

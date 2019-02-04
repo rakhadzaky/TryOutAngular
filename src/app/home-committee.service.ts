@@ -88,15 +88,15 @@ export class HomeCommitteeService {
   }
   AddDataAnswer(data, idQuest){
     console.log(data)
-    console.log(idQuest)
-    return this.http.post<any>(this._DetailTest + this.id + this._DataQuestions + "/" + idQuest + this._DataAnswer, data, {headers: this.token})
+    console.log(idQuest+"in address")
+    return this.http.post(this._DetailTest + this.id + this._DataQuestions + "/" + idQuest + this._DataAnswer, data, {headers: this.token})
   }
   DeleteDataAnswer(id){
     console.log(id)
     return this.http.delete<any>(this._DetailTest + this.id + this._DataQuestions + "/" + this.idQuest + this._DataAnswer + "/" + id, {headers :this.tokenPut})
   }
-  GetDataAnswerQuest(){
-    return this.http.get<any>(this._DetailTest + this.id + this._DataQuestions + "/" + this.idQuest + this._DataAnswer, {headers: this.token})
+  GetDataAnswerQuest(idQuest){
+    return this.http.get<any>(this._DetailTest + this.id + this._DataQuestions + "/" + idQuest + this._DataAnswer, {headers: this.token})
   }
   GetDetailDataQuestion(){
     return this.http.get<any>(this._DetailTest + this.id + this._DataQuestions + "/" + this.idQuest, {headers: this.token})
@@ -104,7 +104,10 @@ export class HomeCommitteeService {
   PutDetailDataQuestion(data){
     console.log(this.tokenPut)
     console.log(data)
-    return this.http.put<any>(this._DetailTest + this.id + this._DataQuestions + "/" + this.idQuest, data, {headers: this.tokenPut})
+    let body = new URLSearchParams()
+    body.set('content', data.content)
+    console.log(body)
+    return this.http.put(this._DetailTest + this.id + this._DataQuestions + "/" + this.idQuest, body, {headers: this.tokenPut})
   }
 
 }

@@ -44,8 +44,8 @@ export class HomeCommitteeComponent implements OnInit {
         res=>{
           this.ListPar = res
           console.log(this.ListPar)
-          // this.page_now = res.meta.current_page
-          // this.page_end = res.meta.last_page
+          this.page_now = res.meta.current_page
+          this.page_end = res.meta.last_page
         },
         err => console.log(err)
       )
