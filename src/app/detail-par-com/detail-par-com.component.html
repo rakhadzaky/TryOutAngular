@@ -38,11 +38,11 @@
           <div class="row">
 						<div class="col-md-4">
 							<label class="font-weight-bold">Id :</label>
-							<p>{{DetailParData.id_participant}}</p>
+							<p>{{DetailParData.id_par}}</p>
 						</div>
 						<div class="col-md-4">
 							<label class="font-weight-bold">Name :</label>
-							<p>{{DetailParData.name}}</p>
+							<p>{{DetailParData.full_name}}</p>
 						</div>
 						<div class="col-md-4">
 							<label class="font-weight-bold">School</label>
@@ -64,11 +64,11 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>{{DetailParData.title}}</td>
-								<td>{{DetailParData.start}}</td>
-								<td>{{DetailParData.end}}</td>
-								<td>{{DetailParData.score}}</td>
+							<tr *ngFor = "let result of DetailParData.results">
+								<td>{{result.test.title}}</td>
+								<td>{{result.test.start}}</td>
+								<td>{{result.test.end}}</td>
+								<td>{{result.score}}</td>
 								<td>
 									<button type="button" class="btn btn-dark"><i class="fa fa-search"></i></button>
 									<button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>

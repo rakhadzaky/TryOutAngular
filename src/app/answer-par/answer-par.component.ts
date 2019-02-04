@@ -46,7 +46,7 @@ export class AnswerParComponent implements OnInit {
             console.log(this.time[4])
             this.time_end = this.time[4].split(":")
             this.TimeNow = formatDate(this.DateNow, 'HH:mm:ss', 'en-US', '+0700').split(":")
-            this.timeLeft = parseInt((parseInt(this.TimeNow[0])*3600) + (parseInt(this.TimeNow[1])*60) + parseInt(this.TimeNow[2]) - (parseInt(this.time_end[0])*3600) + (parseInt(this.time_end[1])*60) + parseInt(this.time_end[2]))
+            this.timeLeft = (parseInt(this.TimeNow[0])*3600) + (parseInt(this.TimeNow[1])*60) + parseInt(this.TimeNow[2]) - (parseInt(this.time_end[0])*3600) + (parseInt(this.time_end[1])*60) + parseInt(this.time_end[2])
             this.timeLeftView[0] = Math.round(this.timeLeft / 3600)
             this.timeLeft = this.timeLeft % 3600
             this.timeLeftView[1] = Math.round(this.timeLeft / 60)

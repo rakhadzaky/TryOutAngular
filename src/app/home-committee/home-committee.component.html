@@ -81,16 +81,16 @@
 									<tr>
 										<td>No</td>
 										<td>Name</td>
-										<td>Username</td>
+										<!-- <td>Username</td> -->
 										<td>School</td>
 										<td>Action</td>
 									</tr>
 								</thead>
 								<tbody>
-									<tr *ngFor = "let par of ListPar.data, let j = index">
+									<tr *ngFor = "let par of ListPar, let j = index">
 										<td>{{j + 1}}</td>
 										<td>{{par.full_name}}</td>
-										<td>{{par.username}}</td>
+										<!-- <td>{{par.username}}</td> -->
 										<td>{{par.school}}</td>
 										<td>
 											<button type="button" class="btn btn-dark" (click)="DetailParCom(j)"><i class="fa fa-search" title="Detail"></i></button>
