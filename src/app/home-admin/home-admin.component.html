@@ -148,7 +148,8 @@
 										<td>{{ListVar.start}}</td>
 										<td>{{ListVar.end}}</td>
 										<td>{{ListVar.status}}</td>
-										<td>Expired</td>
+										<td class="table-danger" *ngIf = "ListVar.end < date_now">Expired</td>
+										<td class="table-success" *ngIf = "ListVar.end >= date_now">Can be Used</td>
 										<td>
 											<button type="button" class="btn btn-danger" (click)="DeleteDataVerifAdm(v)"><i class="fa fa-trash"></i></button>
 											<button type="button" class="btn btn-dark"><i class="fa fa-search" title="Detail"></i></button>

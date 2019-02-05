@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeAdminService } from '../home-admin.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-home-admin',
@@ -28,6 +29,10 @@ export class HomeAdminComponent implements OnInit {
   err_verif_status = ''
 
   err_verif_delete = ''
+
+  now = new Date()
+  time_now = ''
+  date_now = ''
 
   // Pagination
   page_now_par = ''
@@ -68,6 +73,8 @@ export class HomeAdminComponent implements OnInit {
         },
         err => console.log(err)
       )
+    this.date_now = formatDate(this.now, 'yyyy-MM-dd HH:mm:ss', 'en-US', '+0700')
+    console.log(this.date_now)
 
     this.ListDataVerif()
   }

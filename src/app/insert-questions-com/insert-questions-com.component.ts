@@ -15,6 +15,8 @@ export class InsertQuestionsComComponent implements OnInit {
   TableQuestions = []
   AnswerData = {}
   AnswerRecord = []
+
+  res_addQuest= ''
   constructor(private _homeCommitteeService: HomeCommitteeService, private _router: Router) { }
 
   ngOnInit() {
@@ -46,11 +48,13 @@ export class InsertQuestionsComComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res)
+          this.res_addQuest = res.message
           this.GetAllDataQuestions()
           localStorage.removeItem('idQuestionsAns')
           let data = this.TableQuestions.length
           console.log(data)
           localStorage.setItem('idQuestionsAns', data.toString())
+          this.QuestionData = {}
         },
         err => console.log(err)
       )
@@ -98,6 +102,7 @@ export class InsertQuestionsComComponent implements OnInit {
   CleanidQuestionAns(){
     localStorage.removeItem('idQuestionsAns')
     this.AnswerRecord = []
+    this.res_addQuest = ''
   }
 
   DeleteQuestionProses(id){
