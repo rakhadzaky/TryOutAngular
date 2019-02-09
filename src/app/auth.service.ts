@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-  private _baseUrl = "http://to.tritontelkom.id"
+  // private _baseUrl = "http://to.tritontelkom.id"
+  private _baseUrl = "http://103.129.221.65:8000"
   // private _baseUrl = "http://192.16.123.254:8000"
 
   private _LoginUrl = this._baseUrl + "/api/admin/login"
