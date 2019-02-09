@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeAdminService {
 
-  private _baseUrl = "http://to.tritontelkom.id"
+  // private _baseUrl = "http://to.tritontelkom.id"
+  private _baseUrl = "http://localhost:8000"
   // private _baseUrl = "http://192.16.123.254:8000"
 
   private _DetailAdminUrl = this._baseUrl + "/api/admin/detail"
