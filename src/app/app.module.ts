@@ -23,6 +23,7 @@ import { DetailQuesionComponent } from './detail-quesion/detail-quesion.componen
 import { InfoQuestionParComponent } from './info-question-par/info-question-par.component';
 import { AnswerParComponent } from './answer-par/answer-par.component';
 import { DetailParComComponent } from './detail-par-com/detail-par-com.component';
+import { EditTestComComponent } from './edit-test-com/edit-test-com.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DetailParComComponent } from './detail-par-com/detail-par-com.component
     DetailQuesionComponent,
     InfoQuestionParComponent,
     AnswerParComponent,
-    DetailParComComponent
+    DetailParComComponent,
+    EditTestComComponent
   ],
   imports: [
     BrowserModule,

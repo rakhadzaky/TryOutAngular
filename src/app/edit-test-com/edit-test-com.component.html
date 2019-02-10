@@ -1,0 +1,104 @@
+<div class="bg-light">
+		<div class="col-md-12 p-0 bg-secondary">
+			<div class="p-3">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-1 display-3 text-light">
+							<i class="fa fa-user-circle"></i>
+						</div>
+						<div class="col-md-8 text-light">
+							<table class="mt-1">
+								<tr>
+									<td class="font-weight-bold">Name</td>
+									<td>:</td>
+									<td>{{Identity.name}}</td>
+								</tr>
+                <tr>
+									<td class="font-weight-bold">Username</td>
+									<td>:</td>
+									<td>{{Identity.username}}</td>
+								</tr>
+							</table>
+						</div>
+						<div class="offset-md-2 col-md-1 mt-4 mx-auto">
+							<button type="button" class="btn" (click)="LogoutComProses()">Logout</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<div class="container py-1 mt-3">
+			<div class="col-md-10 mx-auto mb-4">
+				<div class="card" id="general">
+					<div class="card-body">
+						<a href="HomeCommittee"><button type="button" class="btn btn-secondary border border-right-0 mybtn rounded-0" title="back"><h1 class="fa fa-angle-left mr-2"></h1></button></a>
+						<h4 class="font-weight-light myTitle border-warning">General</h4>
+						<hr>
+						<div class="alert alert-danger" *ngIf = "err_message != ''">
+							<b>Error !</b> {{err_message}}
+						</div>
+						<form accept-charset="utf-8">
+							<div class="form-group">
+								<label>Title</label>
+								<input type="text" class="form-control" [(ngModel)] = "InsertValue.title" value="{{InsertValue.title}}" name="title">
+								<small class="text-danger">{{err_title}}</small>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Start</label>
+										<input type="datetime-local" class="form-control w-75" [(ngModel)] = "InsertValue.start" value="{{InsertValue.start}}" name="start">
+										<small class="text-danger">{{err_start}}</small>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Finish</label>
+										<input type="datetime-local" class="form-control w-75" [(ngModel)] = "InsertValue.end" value="{{InsertValue.end}}" name="end">
+										<small class="text-danger">{{err_end}}</small>
+									</div>
+								</div>
+							</div>
+							<hr>
+							<div class="form-group">
+								<label class="mb-4">Informations</label>
+
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label class="badge badge-success">True Value</label>
+											<input type="number" class="form-control" [(ngModel)] = "InsertValue.true_value" value="{{InsertValue.true_value}}" name="true">
+											<small class="text-danger">{{err_true_value}}</small>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label class="badge badge-danger">False Value</label>
+											<input type="number" class="form-control" [(ngModel)] = "InsertValue.wrong_value" value="{{InsertValue.wrong_value}}" name="false">
+											<small class="text-danger">{{err_wrong_value}}</small>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label class="badge badge-warning">Empty Value</label>
+											<input type="number" class="form-control" [(ngModel)] = "InsertValue.empty_value" value="{{InsertValue.empty_value}}" name="empty">
+											<small class="text-danger">{{err_empty_value}}</small>
+										</div>
+									</div>
+								</div>
+								<textarea id="informations" class="form-control" [(ngModel)] = "InsertValue.information" value="{{InsertValue.information}}" name="info"></textarea>
+								<small class="text-danger">{{err_information}}</small>
+							</div>
+							<button type="submit" (click) = "PutDataQuestionProses()" class="btn btn-success float-right">Create</button>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	<small class="fixed-bottom text-center bg-dark text-light">All Rights Already Reserved</small>
+	<script>
+		CKEDITOR.replace('informations');
+		CKEDITOR.replace('content');
+	</script>
+</div>

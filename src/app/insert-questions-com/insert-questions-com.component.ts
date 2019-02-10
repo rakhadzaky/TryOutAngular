@@ -127,6 +127,10 @@ export class InsertQuestionsComComponent implements OnInit {
     window.location.href = "/DetailQuestion"
   }
 
+  EditTestMenu(){
+    window.location.href = '/EditTest'
+  }
+
   BackToHome(){
     localStorage.removeItem('detailTest')
     // this._router.navigate(['/InsertQuestions'])

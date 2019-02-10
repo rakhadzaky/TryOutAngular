@@ -107,7 +107,11 @@ export class HomeCommitteeService {
     console.log(this.tokenPut)
     console.log(data)
     console.log(this._DetailTest + this.id + this._DataQuestions + "/" + this.idQuest + "/update")
-    return this.http.post<any>(this._DetailTest + this.id + this._DataQuestions + "/" + this.idQuest + "/update", data, {headers: this.tokenPut})
+    return this.http.post<any>(this._DetailTest + this.id + this._DataQuestions + "/" + this.idQuest + "/update", data, {headers: this.token})
+  }
+  PutDataQuestion(data){
+    console.log(data)
+    return this.http.post<any>(this._DetailTest + this.id + "/update", data, {headers: this.token})
   }
 
 }

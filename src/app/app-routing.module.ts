@@ -10,6 +10,7 @@ import { InsertTestComComponent } from './insert-test-com/insert-test-com.compon
 import { InsertQuestionsComComponent } from './insert-questions-com/insert-questions-com.component';
 import { DetailQuesionComponent } from './detail-quesion/detail-quesion.component';
 import { DetailParComComponent } from './detail-par-com/detail-par-com.component';
+import { EditTestComComponent } from './edit-test-com/edit-test-com.component';
 
 import { LoginParticipantsComponent } from './login-participants/login-participants.component';
 import { HomeParticipantsComponent } from './home-participants/home-participants.component';
@@ -67,6 +68,11 @@ const routes: Routes = [
   {
     path: 'DetailParticipants',
     component: DetailParComComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'EditTest',
+    component: EditTestComComponent,
     canActivate: [AuthGuard]
   },
   // PARTICIPANTS
