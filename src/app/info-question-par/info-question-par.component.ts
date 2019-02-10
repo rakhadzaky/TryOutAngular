@@ -75,4 +75,33 @@ export class InfoQuestionParComponent implements OnInit {
       )
   }
 
+  StartOffTestProses(){
+    this.err_start = ''
+    console.log(this.verif)
+    this._homeParcipantsService.startOffTestPar(this.verif)
+      .subscribe(
+        res => {
+          localStorage.setItem('token_start', res.token)
+          localStorage.setItem('number_quest', '0')
+          // this._router.navigate(['/AnswerTime'])
+          if(localStorage.getItem('answer') === null){
+              localStorage.setItem('answer', JSON.stringify(res.data))
+          }
+          window.location.href = 'AnswerTime'
+        },
+        err => {
+          console.log(err)
+          this.err_start = err.error.message
+          this.err_start = err.error.erros.code
+        }
+      )
+  }
+  LogoutParProses(){
+    this._homeParcipantsService.getLogoutParProses()
+    localStorage.removeItem('token')
+    localStorage.removeItem('idTest')
+    // this._router.navigate(['/login'])
+    window.location.href = "/login"
+  }
+
 }

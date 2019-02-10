@@ -6,9 +6,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeCommitteeService {
 
-  private _baseUrl = "http://103.129.221.65:8000"
   // private _baseUrl = "http://to.tritontelkom.id"
   // private _baseUrl = "http://192.16.123.254:8000"
+  private _baseUrl = "http://103.129.221.65:8000"
+  // private _baseUrl = "http://rumahganesha.web.id:8000"
 
   private _GetParUrl = this._baseUrl + "/api/com/par"
   private _GetResultUrl = this._baseUrl + "/api/com/par/results"
@@ -105,10 +106,8 @@ export class HomeCommitteeService {
   PutDetailDataQuestion(data){
     console.log(this.tokenPut)
     console.log(data)
-    let body = new URLSearchParams()
-    body.set('content', data.content)
-    console.log(body)
-    return this.http.put(this._DetailTest + this.id + this._DataQuestions + "/" + this.idQuest, body, {headers: this.tokenPut})
+    console.log(this._DetailTest + this.id + this._DataQuestions + "/" + this.idQuest + "/update")
+    return this.http.post<any>(this._DetailTest + this.id + this._DataQuestions + "/" + this.idQuest + "/update", data, {headers: this.tokenPut})
   }
 
 }

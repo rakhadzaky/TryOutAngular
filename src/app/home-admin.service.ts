@@ -7,8 +7,9 @@ import { HttpClient } from '@angular/common/http';
 export class HomeAdminService {
 
   // private _baseUrl = "http://to.tritontelkom.id"
-  private _baseUrl = "http://103.129.221.65:8000"
   // private _baseUrl = "http://192.16.123.254:8000"
+  private _baseUrl = "http://103.129.221.65:8000"
+  // private _baseUrl = "http://rumahganesha.web.id:8000"
 
   private _DetailAdminUrl = this._baseUrl + "/api/admin/detail"
   private _LogoutUrl = this._baseUrl + "/api/admin/logout"

@@ -7,7 +7,7 @@
 							<i class="fa fa-user-circle"></i>
 						</div>
 						<div class="col-md-8 text-light">
-              <table class="mt-1">
+							<table class="mt-1">
 								<tr>
 									<td class="font-weight-bold">Name</td>
 									<td>:</td>
@@ -21,7 +21,7 @@
 							</table>
 						</div>
 						<div class="offset-md-2 col-md-1 mt-4 mx-auto">
-							<button type="button" class="btn" ng-click="logOut()">Logout</button>
+							<button type="button" class="btn" (click)="LogoutComProses()">Logout</button>
 						</div>
 					</div>
 				</div>
@@ -98,6 +98,7 @@
 							</div>
 						</div>
 						<!-- <button type="button" class="btn btn-warning font-weight-bold">Stand By</button> -->
+						<button type="button" class="btn btn-info float-left"><i class="fa fa-edit"></i> Edit Test</button>
 						<button type="button" class="btn btn-dark float-right" ng-click="modal = 'show'"><i class="fa fa-plus"></i> Add Question</button>
 						<br style="clear: both">
 						<hr>

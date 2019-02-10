@@ -50,11 +50,14 @@ export class InsertQuestionsComComponent implements OnInit {
           console.log(res)
           this.res_addQuest = res.message
           this.GetAllDataQuestions()
-          localStorage.removeItem('idQuestionsAns')
+          if(localStorage.getItem('idQuestionsAns') !== null){
+            localStorage.removeItem('idQuestionsAns')
+          }
           let data = this.TableQuestions.length
           console.log(data)
           localStorage.setItem('idQuestionsAns', data.toString())
           this.QuestionData = {}
+          this.AnswerRecord = []
         },
         err => console.log(err)
       )
@@ -68,6 +71,7 @@ export class InsertQuestionsComComponent implements OnInit {
           console.log(res)
           this.GetAnswerData()
           this.GetAllDataQuestions()
+          this.AnswerData = {}
         },
         err => console.log(err)
       )
@@ -127,6 +131,13 @@ export class InsertQuestionsComComponent implements OnInit {
     localStorage.removeItem('detailTest')
     // this._router.navigate(['/InsertQuestions'])
     window.location.href = '/HomeCommittee'
+  }
+
+  LogoutComProses(){
+    this._homeCommitteeService.getLogoutComProses()
+    localStorage.removeItem('token')
+    // this._router.navigate(['/login'])
+    window.location.href = '/login'
   }
 
 }

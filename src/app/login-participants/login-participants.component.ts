@@ -16,6 +16,7 @@ export class LoginParticipantsComponent implements OnInit {
   Re_type = ''
   regis = {}
   err = ''
+  err_sign = ''
   err_username = ''
   err_code = ''
   err_first_name = ''
@@ -26,6 +27,7 @@ export class LoginParticipantsComponent implements OnInit {
   }
 
   LoginUserProcess(){
+    this.err = ''
     this._auth.LoginPar(this.LoginUserData)
       .subscribe(
         res => {
@@ -40,14 +42,23 @@ export class LoginParticipantsComponent implements OnInit {
   }
 
   RegisterUserProses(){
+    this.err_sign = ''
+    this.err_username = ''
+    this.err_code = ''
+    this.err_first_name = ''
+    this.err_last_name = ''
+    this.err_password = ''
+    this.err_school = ''
     this._auth.RegisterPar(this.Data)
       .subscribe(
         res=>{
           this.regis = res
           console.log(this.regis)
+          this.err_sign = 'Sign Up Success, Please go to login page'
         },
         err => {
-          console.log(err)          
+          console.log(err)
+          this.err_sign = err.error.message
           this.err_username = err.error.errors.username
           this.err_code = err.error.errors.code
           this.err_first_name = err.error.errors.first_name

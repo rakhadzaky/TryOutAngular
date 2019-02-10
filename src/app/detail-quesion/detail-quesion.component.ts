@@ -97,4 +97,13 @@ export class DetailQuesionComponent implements OnInit {
       )
   }
 
+  LogoutComProses(){
+    this._homeCommitteeService.getLogoutComProses()
+    localStorage.removeItem('token')
+    localStorage.removeItem('idQuestionsAns')
+    localStorage.removeItem('detailTest')
+    // this._router.navigate(['/login'])
+    window.location.href = '/login'
+  }
+
 }

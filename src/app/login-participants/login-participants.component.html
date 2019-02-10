@@ -34,6 +34,9 @@
         <div class="card-body">
           <h4>Sign Up</h4>
           <form action="" method="" accept-charset="utf-8">
+            <div class="alert alert-danger" *ngIf = "err_sign != ''">
+              <b>Error</b> {{err_sign}}
+            </div>
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">

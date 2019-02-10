@@ -7,7 +7,7 @@
 							<i class="fa fa-user-circle"></i>
 						</div>
 						<div class="col-md-8 text-light">
-              <table class="mt-1">
+							<table class="mt-1">
 								<tr>
 									<td class="font-weight-bold">Name</td>
 									<td>:</td>
@@ -21,7 +21,7 @@
 							</table>
 						</div>
 						<div class="offset-md-2 col-md-1 mt-4 mx-auto">
-							<button type="button" class="btn" ng-click="logOut()">Logout</button>
+							<button type="button" class="btn" (click)="LogoutComProses()">Logout</button>
 						</div>
 					</div>
 				</div>
@@ -38,7 +38,7 @@
 						<div class="alert alert-danger" *ngIf = "err_message != ''">
 							<b>Error !</b> {{err_message}}
 						</div>
-						<form accept-charset="utf-8">
+						<form accept-charset="utf-8" (ngSubmit)="InsertTestProses()">
 							<div class="form-group">
 								<label>Title</label>
 								<input type="text" class="form-control" [(ngModel)] = "InsertValue.title" name="title">
@@ -90,7 +90,7 @@
 								<textarea id="informations" class="form-control" [(ngModel)] = "InsertValue.information" name="info"></textarea>
 								<small class="text-danger">{{err_information}}</small>
 							</div>
-							<button type="button" (click) = "InsertTestProses()" class="btn btn-success float-right">Create</button>
+							<button type="submit" (click) = "InsertTestProses()" class="btn btn-success float-right">Create</button>
 						</form>
 					</div>
 				</div>

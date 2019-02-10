@@ -6,20 +6,23 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeParticipantsService {
 
-  private _baseUrl = "http://103.129.221.65:8000"
   // private _baseUrl = "http://to.tritontelkom.id"
   // private _baseUrl = "http://192.16.123.254:8000"
+  private _baseUrl = "http://103.129.221.65:8000"
+  // private _baseUrl = "http://rumahganesha.web.id:8000"
 
   private _logoutPar = this._baseUrl + "/api/par/logout"
 
   private _detailPar = this._baseUrl + "/api/par/detail"
   private _testUrl = this._baseUrl + "/api/par/test"
   private _startUrl = "/start"
+  private _startOffUrl = "/start_off"
 
   private _getAllQuestions = "/getQuestions"
   private _putAnswer = "/answers"
 
   private _finish = "/finish"
+  private _finishOff = "/finish_off"
 
   Bearer = 'Bearer '+localStorage.getItem('token')
   token =
@@ -59,6 +62,10 @@ export class HomeParticipantsService {
     console.log(data)
     return this.http.post<any>(this._testUrl + "/" + this.id + this._startUrl, data, {headers: this.token})
   }
+  startOffTestPar(data){
+    console.log(data)
+    return this.http.post<any>(this._testUrl + "/" + this.id + this._startOffUrl, data, {headers: this.token})
+  }
 
 
   AnswerGetAllQuestions(){
@@ -78,5 +85,10 @@ export class HomeParticipantsService {
   FinishAnswer(){
     console.log(this.token_test)
     return this.http.post<any>(this._testUrl + "/" + this.id + this._finish, this.body, {headers: this.token})
+  }
+  FinishOffAnswer(data){
+    console.log(this.token_test)
+    console.log(data)
+    return this.http.post<any>(this._testUrl + "/" + this.id + this._finishOff, JSON.parse(data), {headers: this.token})
   }
 }

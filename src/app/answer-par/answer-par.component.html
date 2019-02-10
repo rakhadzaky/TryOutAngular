@@ -21,7 +21,7 @@
 							</table>
 						</div>
 						<div class="offset-md-2 col-md-1 mt-4 mx-auto">
-							<button type="button" class="btn" ng-click="logOut()">Logout</button>
+							<button type="button" class="btn" (click)="LogoutParProses()">Logout</button>
 						</div>
 					</div>
 				</div>
@@ -58,7 +58,7 @@
 									</div>
 									<div class="col-md-3">
 										<label>Your Answer</label>
-										<select class="form-control" name="answer" [(ngModel)] = "value.answer">
+										<select class="form-control" name="answer" [(ngModel)] = "Question.answer">
 											<option value="" selected>Empty</option>
 											<option value="{{j}}" *ngFor="let ans of ListAnswer, let j = index">{{j+1}}</option>
 										</select>
@@ -92,7 +92,7 @@
 				</div>
 				<div class="card mb-3">
 					<div class="card-body">
-						<button type="button" class="form-control btn btn-success" (click)="FinishProses()" name="button">Finish</button>
+						<button type="button" class="form-control btn btn-success" (click)="FinishOffProses()" name="button">Finish</button>
 						<small class="text-danger">Click this button only if you sure want to finish the test</small>
 					</div>
 				</div>

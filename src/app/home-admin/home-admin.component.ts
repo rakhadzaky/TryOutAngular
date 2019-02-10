@@ -215,7 +215,8 @@ export class HomeAdminComponent implements OnInit {
       //   err => console.log(err)
       // )
     localStorage.removeItem('token')
-    this._router.navigate(['/'])
+    // this._router.navigate(['/'])
+    window.location.href = '/login'
   }
 
 }
