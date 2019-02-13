@@ -106,7 +106,7 @@ export class AnswerParComponent implements OnInit {
     localStorage.setItem('number_quest', id)
     console.log(localStorage.getItem('number_quest'))
     this.setNumber()
-    // this.GetListQuestions()
+    this.GetListQuestions()
     this.GetQuestion()
     this.GetListAnswer()
   }
@@ -139,6 +139,7 @@ export class AnswerParComponent implements OnInit {
     this._homeParcipantsService.AnswerGetAllQuestions()
       .subscribe(
         res => {
+          this.ListQuestion = res
           console.log(this.ListQuestion)
           if(localStorage.getItem('arrquestion') === null){
             localStorage.setItem('arrquestion', JSON.stringify(this.ListQuestion))

@@ -78,7 +78,7 @@ export class InsertTestComComponent implements OnInit {
     localStorage.removeItem('token')
     localStorage.removeItem('detail_test')
     // this._router.navigate(['/login'])
-    window.location.href = '/login'
+    window.location.href = '/loginCom'
   }
 
 }

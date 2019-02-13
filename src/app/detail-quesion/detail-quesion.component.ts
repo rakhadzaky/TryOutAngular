@@ -103,7 +103,7 @@ export class DetailQuesionComponent implements OnInit {
     localStorage.removeItem('idQuestionsAns')
     localStorage.removeItem('detailTest')
     // this._router.navigate(['/login'])
-    window.location.href = '/login'
+    window.location.href = '/loginCom'
   }
 
 }

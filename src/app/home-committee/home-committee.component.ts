@@ -127,7 +127,7 @@ export class HomeCommitteeComponent implements OnInit {
     this._homeCommitteeService.getLogoutComProses()
     localStorage.removeItem('token')
     // this._router.navigate(['/login'])
-    window.location.href = '/login'
+    window.location.href = '/loginCom'
   }
 
 }

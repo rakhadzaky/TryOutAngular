@@ -38,7 +38,7 @@
 						<div class="alert alert-danger" *ngIf = "err_message != ''">
 							<b>Error !</b> {{err_message}}
 						</div>
-						<form accept-charset="utf-8" (ngSubmit)="InsertTestProses()">
+						<form accept-charset="utf-8">
 							<div class="form-group">
 								<label>Title</label>
 								<input type="text" class="form-control" [(ngModel)] = "InsertValue.title" name="title">

@@ -36,6 +36,12 @@
 						<h4 class="font-weight-light myTitle border-warning">Detail Questions</h4>
 					<hr>
 					<p>{{DataDetailQuest.question}}</p>
+					<div class="card w-75" *ngFor="let img of DataDetailQuest.images">
+						<img class="card-img-top" src="{{img.url}}"alt="">
+						<div class="card-body">
+							{{img.file_name}}
+						</div>
+					</div>
 
 					<hr>
 					<br>
@@ -43,6 +49,7 @@
 					<h6>List Choices</h6>
 					<br>
 					<div class="card mb-2" *ngFor="let ans of DataDetailQuest.options">
+						<img src="{{ansImage.url}}" *ngFor="let ansImage of ans.images" alt="">
 						<div class="card-body">
 							<i class="float-right" [ngClass] = "{'fa fa-times' : !ans.status,'text-danger' : !ans.status, 'fa fa-check' : ans.status, 'text-success' : ans.status}"></i>
 							{{ans.option}}
