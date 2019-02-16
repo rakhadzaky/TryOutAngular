@@ -150,21 +150,24 @@
 
 				<!-- Modal body -->
 				<div class="modal-body">
-					<div class="alert alert-success" *ngIf="res_addQuest != ''">
-						{{res_addQuest}}
-					</div>
 					<div class="row">
 						<div class="col-md-8">
+							<div class="alert alert-success" *ngIf="res_addQuest != ''">
+								{{res_addQuest}}
+							</div>
+							<div class="alert alert-danger" *ngIf="err_addQuest != ''">
+								{{err_addQuest}}
+							</div>
 							<div class="form-group">
 								<label>Content</label>
 								<textarea id="content" class="form-control" [(ngModel)] = "QuestionData.content" name="content"></textarea>
 							</div>
 							<hr>
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<div class="badge badge-dark">
 									Gambar.jpg
 								</div>
-							</div>
+							</div> -->
 							<div class="form-group">
 								<label>Insert Picture</label>
 								<input type="file" name="content" [(ngModel)] ="QuestionData.image" class="form-control mr-2">

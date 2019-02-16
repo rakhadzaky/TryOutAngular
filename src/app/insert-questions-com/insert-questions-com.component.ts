@@ -17,6 +17,8 @@ export class InsertQuestionsComComponent implements OnInit {
   AnswerRecord = []
 
   res_addQuest= ''
+
+  err_addQuest= ''
   constructor(private _homeCommitteeService: HomeCommitteeService, private _router: Router) { }
 
   ngOnInit() {
@@ -44,6 +46,8 @@ export class InsertQuestionsComComponent implements OnInit {
   }
 
   AddQuestionProses(){
+    this.res_addQuest = ''
+    this.err_addQuest = ''
     this._homeCommitteeService.AddDataQuetions(this.QuestionData)
       .subscribe(
         res => {
@@ -59,7 +63,10 @@ export class InsertQuestionsComComponent implements OnInit {
           this.QuestionData = {}
           this.AnswerRecord = []
         },
-        err => console.log(err)
+        err => {
+          console.log(err)
+          this.err_addQuest = err.error.errors.content[0]
+        }
       )
   }
 
