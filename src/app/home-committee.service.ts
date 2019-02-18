@@ -29,6 +29,12 @@ export class HomeCommitteeService {
       Accept : 'application/json',
       Authorization : this.Bearer
     }
+  tokenPost = 
+  {
+    // 'Content-Type':'multipart/form-data',
+    Accept : 'application/json',
+    Authorization : this.Bearer
+  }
   tokenPut =
   {
     Accept : 'application/json',
@@ -82,7 +88,7 @@ export class HomeCommitteeService {
   }
   AddDataQuetions(data){
     console.log(data)
-    return this.http.post<any>(this._DetailTest + this.id + this._DataQuestions, data, {headers: this.token})
+    return this.http.post<any>(this._DetailTest + this.id + this._DataQuestions, data, {headers: this.tokenPost})
   }
   DeleteDataQuestion(id){
     console.log(id)

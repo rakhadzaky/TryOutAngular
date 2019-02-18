@@ -11,7 +11,7 @@ export class InsertQuestionsComComponent implements OnInit {
 
   TestData = {}
   Identity = {}
-  QuestionData = {}
+  QuestionData = ''
   TableQuestions = []
   AnswerData = {}
   AnswerRecord = []
@@ -19,6 +19,8 @@ export class InsertQuestionsComComponent implements OnInit {
   res_addQuest= ''
 
   err_addQuest= ''
+
+  selectedImg:File = null
   constructor(private _homeCommitteeService: HomeCommitteeService, private _router: Router) { }
 
   ngOnInit() {
@@ -48,7 +50,12 @@ export class InsertQuestionsComComponent implements OnInit {
   AddQuestionProses(){
     this.res_addQuest = ''
     this.err_addQuest = ''
-    this._homeCommitteeService.AddDataQuetions(this.QuestionData)
+    var fd = new FormData()
+    console.log(this.selectedImg.name)
+    fd.append('image', this.selectedImg, this.selectedImg.name)
+    fd.append('content', this.QuestionData)
+    console.log(fd)
+    this._homeCommitteeService.AddDataQuetions(fd)
       .subscribe(
         res => {
           console.log(res)
@@ -56,11 +63,11 @@ export class InsertQuestionsComComponent implements OnInit {
           this.GetAllDataQuestions()
           if(localStorage.getItem('idQuestionsAns') !== null){
             localStorage.removeItem('idQuestionsAns')
-          }
+          }6
           let data = this.TableQuestions.length
           console.log(data)
           localStorage.setItem('idQuestionsAns', data.toString())
-          this.QuestionData = {}
+          this.QuestionData = ''
           this.AnswerRecord = []
         },
         err => {
@@ -70,6 +77,11 @@ export class InsertQuestionsComComponent implements OnInit {
       )
   }
 
+  OnChangeFile(event){
+    this.selectedImg = <File>event.target.files[0]
+    console.log(event)
+  }
+  
   AddAnswerProses(){
     console.log(localStorage.getItem('idQuestionsAns') + "in controller")
     this._homeCommitteeService.AddDataAnswer(this.AnswerData, localStorage.getItem('idQuestionsAns'))
