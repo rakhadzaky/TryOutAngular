@@ -96,7 +96,6 @@ export class HomeCommitteeService {
   }
   AddDataAnswer(data, idQuest){
     console.log(data)
-    console.log(idQuest+"in address")
     return this.http.post(this._DetailTest + this.id + this._DataQuestions + "/" + idQuest + this._DataAnswer, data, {headers: this.token})
   }
   DeleteDataAnswer(id){

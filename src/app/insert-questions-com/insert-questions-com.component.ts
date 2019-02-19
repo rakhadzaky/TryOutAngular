@@ -13,7 +13,9 @@ export class InsertQuestionsComComponent implements OnInit {
   Identity = {}
   QuestionData = ''
   TableQuestions = []
-  AnswerData = {}
+  // AnswerData = {}
+  AnswerDataOption = ''
+  AnswerDataStatus = ''
   AnswerRecord = []
 
   res_addQuest= ''
@@ -21,6 +23,7 @@ export class InsertQuestionsComComponent implements OnInit {
   err_addQuest= ''
 
   selectedImg:File = null
+  selectedImgAnswer:File = null
   constructor(private _homeCommitteeService: HomeCommitteeService, private _router: Router) { }
 
   ngOnInit() {
@@ -51,10 +54,12 @@ export class InsertQuestionsComComponent implements OnInit {
     this.res_addQuest = ''
     this.err_addQuest = ''
     var fd = new FormData()
-    console.log(this.selectedImg.name)
-    fd.append('image', this.selectedImg, this.selectedImg.name)
-    fd.append('content', this.QuestionData)
-    console.log(fd)
+    if(this.selectedImg == null){
+      fd.append('content', this.QuestionData)
+    }else{
+      fd.append('content', this.QuestionData)
+      fd.append('image', this.selectedImg, this.selectedImg.name)
+    }
     this._homeCommitteeService.AddDataQuetions(fd)
       .subscribe(
         res => {
@@ -81,16 +86,32 @@ export class InsertQuestionsComComponent implements OnInit {
     this.selectedImg = <File>event.target.files[0]
     console.log(event)
   }
+
+  OnChangeFileAnswer(event){
+    this.selectedImgAnswer = <File>event.target.files[0]
+    console.log(event)
+  }
   
   AddAnswerProses(){
     console.log(localStorage.getItem('idQuestionsAns') + "in controller")
-    this._homeCommitteeService.AddDataAnswer(this.AnswerData, localStorage.getItem('idQuestionsAns'))
+    var AnswerData = new FormData()
+    if(this.selectedImgAnswer == null){
+      AnswerData.append('option', this.AnswerDataOption)
+      AnswerData.append('status', this.AnswerDataStatus)
+    }else{
+      AnswerData.append('option', this.AnswerDataOption)
+      AnswerData.append('status', this.AnswerDataStatus)
+      AnswerData.append('image', this.selectedImgAnswer, this.selectedImgAnswer.name)
+    }      
+    this._homeCommitteeService.AddDataAnswer(AnswerData, localStorage.getItem('idQuestionsAns'))
       .subscribe(
         res => {
           console.log(res)
           this.GetAnswerData()
           this.GetAllDataQuestions()
-          this.AnswerData = {}
+          // AnswerData = {}
+          this.AnswerDataOption = ''
+          this.AnswerDataStatus = ''
         },
         err => console.log(err)
       )

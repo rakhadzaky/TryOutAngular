@@ -182,7 +182,7 @@
 							</div>
 							<div class="form-group">
 								<div class="card p-2 mb-1" *ngFor ="let ans of AnswerRecord" [ngClass]="{'border-success': ans.status}">
-									{{ans.option}}
+									<div class="form-inline">{{ans.option}} <i class="ml-2" [ngClass]="{'fa fa-image': ans.images.length != 0}"></i></div>
 								</div>
 							<hr>
 							<div>
@@ -190,10 +190,10 @@
 									<input type="radio" name="inputanswer" ng-model="input" value="text"><label class="mr-1">Text</label>
 									<input type="radio" name="inputanswer" ng-model="input" value="picture"><label>Picture</label>
 								</div> -->
-								<input type="text" class="form-control" placeholder="Answer Option" name="answer-text" [(ngModel)] ="AnswerData.option">
-								<input type="file" class="form-control">
+								<input type="text" class="form-control" placeholder="Answer Option" name="answer-text" [(ngModel)] ="AnswerDataOption">
+								<input type="file" class="form-control" (change) = "OnChangeFileAnswer($event)">
 								<div class="mt-1 mb-1">
-									<select class="form-control" name="true-choice" [(ngModel)] = "AnswerData.status">
+									<select class="form-control" name="true-choice" [(ngModel)] = "AnswerDataStatus">
 										<option value="0" selected>False</option>
 										<option value="1">True</option>
 									</select>
