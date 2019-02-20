@@ -169,10 +169,11 @@ export class AnswerParComponent implements OnInit {
     //     err => console.log(err)
     //   )
       this.answer = JSON.parse(localStorage.getItem('answer'))
-      this.answer[localStorage.getItem('number_quest')][parseInt(localStorage.getItem('number_quest'))+1] = this.value['answer']
+      // console.log(this.Question['answer'])
+      this.answer[localStorage.getItem('number_quest')][parseInt(localStorage.getItem('number_quest'))+1] = this.Question['answer']
       localStorage.setItem('answer', JSON.stringify(this.answer))
       this.ListQuestion = JSON.parse(localStorage.getItem('arrquestion'))
-      this.ListQuestion[localStorage.getItem('number_quest')]['answer'] = this.value['answer']
+      this.ListQuestion[localStorage.getItem('number_quest')]['answer'] = this.Question['answer']
       localStorage.setItem('arrquestion', JSON.stringify(this.ListQuestion))
   }
 
