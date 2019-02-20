@@ -118,5 +118,9 @@ export class HomeCommitteeService {
     console.log(data)
     return this.http.post<any>(this._DetailTest + this.id + "/update", data, {headers: this.token})
   }
+  PutTrueChoice(data){
+    console.log(data)
+    // return this.http.post<any>(this._DetailTest + this.id + )
+  }
 
 }

@@ -88,6 +88,10 @@
 									</div>
 								</div>
 								<textarea id="informations" class="form-control" [(ngModel)] = "InsertValue.information" name="info"></textarea>
+								<script>
+									CKEDITOR.replace('informations');
+									CKEDITOR.replace('content');
+								</script>
 								<small class="text-danger">{{err_information}}</small>
 							</div>
 							<button type="submit" (click) = "InsertTestProses()" class="btn btn-success float-right">Create</button>
@@ -97,8 +101,4 @@
 			</div>
 	</div>
 	<small class="fixed-bottom text-center bg-dark text-light">All Rights Already Reserved</small>
-	<script>
-		CKEDITOR.replace('informations');
-		CKEDITOR.replace('content');
-	</script>
 </div>
