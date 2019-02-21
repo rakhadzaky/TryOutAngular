@@ -36,6 +36,7 @@
 						<h4 class="text-primary">Soal {{VarNumber}}</h4>
 						<hr>
 						<p>{{Question.question}}</p>
+						<img src="{{questImage.url}}" *ngFor="let questImage of Question.image" alt="">
 					</div>
 				</div>
 				<div class="col-md-12 mt-4">
@@ -53,6 +54,7 @@
 									{{ans.option}} -->
 									<div class="col-md-9 row">
 										<div class="col-md-4" *ngFor="let jaw of ListAnswer, let no = index">
+											<img src="{{ansImage.url}}" *ngFor="let ansImage of jaw.images" alt="">
 											<p>{{no + 1}}). {{jaw.option}}</p>
 										</div>
 									</div>
