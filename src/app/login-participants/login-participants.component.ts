@@ -23,6 +23,7 @@ export class LoginParticipantsComponent implements OnInit {
   err_last_name = ''
   err_school = ''
   err_password = ''
+  suc_sign = ''
   ngOnInit() {
   }
 
@@ -43,6 +44,7 @@ export class LoginParticipantsComponent implements OnInit {
 
   RegisterUserProses(){
     this.err_sign = ''
+    this.suc_sign = ''
     this.err_username = ''
     this.err_code = ''
     this.err_first_name = ''
@@ -54,7 +56,7 @@ export class LoginParticipantsComponent implements OnInit {
         res=>{
           this.regis = res
           console.log(this.regis)
-          this.err_sign = 'Sign Up Success, Please go to login page'
+          this.suc_sign = 'Sign Up Success, Please go to login page'
         },
         err => {
           console.log(err)
