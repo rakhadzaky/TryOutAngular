@@ -51,6 +51,9 @@ export class HomeCommitteeService {
   getAllResult(){
     return this.http.get<any>(this._GetResultUrl, {headers: this.token})
   }
+  getAllResultNoPage(){
+    return this.http.get<any>(this._GetParUrl + "/all_results", {headers: this.token})
+  }
   getDetailPar(id){
     return this.http.get<any>(this._GetDetailParUrl + id, {headers: this.token})
   }

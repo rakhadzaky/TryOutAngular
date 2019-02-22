@@ -11,9 +11,11 @@ export class DetailQuesionComponent implements OnInit {
 
   DataDetailQuest = {}
   Identity = {}
-  QuestionData = {}
+  QuestionDataQuest = ''
   AnswerData = {}
   AnswerRecord = []
+
+  selectedImage:File = null;
   constructor(private _homeCommitteeService: HomeCommitteeService, private _router: Router) { }
 
   ngOnInit() {
@@ -58,8 +60,24 @@ export class DetailQuesionComponent implements OnInit {
       )
   }
 
+  onChangeImage(event){
+    this.selectedImage = <File>event.target.files[0]
+    console.log(this.selectedImage)
+  }
+
   EditQuestionProses(){
-    this._homeCommitteeService.PutDetailDataQuestion(this.QuestionData)
+    var fd = new FormData()
+    console.log(this.selectedImage == null)
+    if(this.selectedImage == null){
+      console.log(this.QuestionDataQuest)
+      fd.append('content', this.QuestionDataQuest)
+    }else{
+      console.log(this.selectedImage)
+      console.log(this.QuestionDataQuest)
+      fd.append('content', this.QuestionDataQuest)
+      fd.append('image', this.selectedImage, this.selectedImage.name)
+    }
+    this._homeCommitteeService.PutDetailDataQuestion(fd)
       .subscribe(
         res => {
           console.log(res)

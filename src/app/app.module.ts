@@ -24,6 +24,7 @@ import { InfoQuestionParComponent } from './info-question-par/info-question-par.
 import { AnswerParComponent } from './answer-par/answer-par.component';
 import { DetailParComComponent } from './detail-par-com/detail-par-com.component';
 import { EditTestComComponent } from './edit-test-com/edit-test-com.component';
+import { PrintScoreComponent } from './print-score/print-score.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { EditTestComComponent } from './edit-test-com/edit-test-com.component';
     InfoQuestionParComponent,
     AnswerParComponent,
     DetailParComComponent,
-    EditTestComComponent
+    EditTestComComponent,
+    PrintScoreComponent
   ],
   imports: [
     BrowserModule,

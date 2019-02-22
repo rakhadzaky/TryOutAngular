@@ -48,7 +48,7 @@
 								<div class="card-body">
 									<h6 class="font-weight-light">{{quest.title}}</h6>
 									<hr>
-									<p class="text-info"><i class="fa fa-info-circle"></i> {{quest.information}}</p>
+									<pre class="text-info"><i class="fa fa-info-circle"></i> {{quest.information}}</pre>
 									<p class="text-info"><i class="fa fa-clock-o"></i> {{quest.start}} - {{quest.end}}</p>
 									<!-- <p class="badge badge-success">Scheduled</p>
                   <p class="badge badge-warning">On Going</p>
@@ -70,7 +70,7 @@
 					</div> -->
 				</div>
 				<div id="menu1" class="container tab-pane" ng-class="{'fade' : page != 'participants', 'active' : page == 'participants'}"><br>
-							<button type="button" class="btn btn-secondary mb-2" ng-click="toPrintAllParticipants()"><i class="fa fa-print"></i></button>
+							<button type="button" class="btn btn-secondary mb-2" (click)="PrintParCom()"><i class="fa fa-print"></i></button>
 							<ul class="pagination justify-content-end float-right">
 								<li class="page-item" (click)="GetAllParListPrev(page_now)" [ngClass] = "{'disabled' : page_now == '1'}"><a class="page-link">Previous</a></li>
 								<li class="page-item disabled"><a class="page-link">{{page_now}} / {{page_end}}</a></li>

@@ -1,0 +1,20 @@
+<table class="table table-striped table-hover bg-white">
+  <thead class="font-weight-bold bg-secondary text-light">
+    <tr>
+      <td>No</td>
+      <td>Name</td>
+      <td>School</td>
+      <td>Question Title</td>
+      <td>Score</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let par of ListPar, let j = index">
+      <td>{{j + 1}}</td>
+      <td>{{par.name}}</td>
+      <td>{{par.school}}</td>
+      <td>{{par.title}}</td>
+      <td>{{par.score}}</td>
+    </tr>
+  </tbody>
+</table>

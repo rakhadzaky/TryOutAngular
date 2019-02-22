@@ -101,7 +101,8 @@ export class HomeCommitteeComponent implements OnInit {
   }
 
   DeleteTestProses(id){
-    this._homeCommitteeService.DeleteTestCom(id)
+    if(confirm("Are you sure want to delete this ?")){
+      this._homeCommitteeService.DeleteTestCom(id)
       .subscribe(
         res => {
           console.log(res)
@@ -114,6 +115,7 @@ export class HomeCommitteeComponent implements OnInit {
           // this.err_delete = err.error.message
         }
       )
+    }
   }
 
   DetailParCom(id){
@@ -128,6 +130,10 @@ export class HomeCommitteeComponent implements OnInit {
     localStorage.removeItem('token')
     // this._router.navigate(['/login'])
     window.location.href = '/loginCom'
+  }
+
+  PrintParCom(){
+    window.open('/PrintPar','_blank')
   }
 
 }

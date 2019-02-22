@@ -18,6 +18,7 @@ import { InfoQuestionParComponent } from './info-question-par/info-question-par.
 import { AnswerParComponent } from './answer-par/answer-par.component';
 
 import { AuthGuard } from './auth.guard';
+import { PrintScoreComponent } from './print-score/print-score.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,11 @@ const routes: Routes = [
   {
     path: 'EditTest',
     component: EditTestComComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'PrintPar',
+    component: PrintScoreComponent,
     canActivate: [AuthGuard]
   },
   // PARTICIPANTS
