@@ -50,29 +50,20 @@ export class AnswerParComponent implements OnInit {
             this.TimeNow = formatDate(this.DateNow, 'HH:mm:ss', 'en-US', '+0700').split(":")
             // this.timeLeft = (parseInt(this.TimeNow[0])*3600) + (parseInt(this.TimeNow[1])*60) + parseInt(this.TimeNow[2]) - (parseInt(this.time_end[0])*3600) + (parseInt(this.time_end[1])*60) + parseInt(this.time_end[2])
             this.timeLeft = ((parseInt(this.time_end[0])*3600) + (parseInt(this.time_end[1])*60) + parseInt(this.time_end[2])) - ((parseInt(this.TimeNow[0])*3600) + (parseInt(this.TimeNow[1])*60) + parseInt(this.TimeNow[2]))
-            console.log(this.timeLeft)
             this.timeLeftView[0] = Math.round(this.timeLeft / 3600)
             this.timeLeft = this.timeLeft % 3600
             this.timeLeftView[1] = Math.round(this.timeLeft / 60)
             this.timeLeft = this.timeLeft % 60
             this.timeLeftView[2] = Math.round(this.timeLeft)
             this.startTimer()
-            console.log((parseInt(this.time_end[0])*3600) + (parseInt(this.time_end[1])*60) + parseInt(this.time_end[2]))
-            console.log((parseInt(this.TimeNow[0])*3600) + (parseInt(this.TimeNow[1])*60) + parseInt(this.TimeNow[2]))
-            console.log(this.timeLeftView)
-            console.log(this.TimeNow)
-            console.log(this.time_end)
           },
           err => console.log(err)
         )
 
     this.setNumber()
-
     this.GetListQuestions()
-
-    this.GetListAnswer()
-
     this.GetQuestion()
+    this.GetListAnswer()
 
   }
 
@@ -92,7 +83,7 @@ export class AnswerParComponent implements OnInit {
         this.timeLeftView[2] = 59
       }else {
         window.alert("Times Up !!")
-        this.FinishProses()
+        this.FinishOffProses()
       }
     },1000)
   }

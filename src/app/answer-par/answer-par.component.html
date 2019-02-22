@@ -53,7 +53,7 @@
 									<!-- <input type="radio" name="answer" value="{{j}}" [(ngModel)]="value.answer" checked>
 									{{ans.option}} -->
 									<div class="col-md-9 row">
-										<div class="col-md-4" *ngFor="let jaw of ListAnswer, let no = index">
+										<div class="col-md-4" *ngFor="let jaw of Question.options, let no = index">
 											<img src="{{ansImage.url}}" *ngFor="let ansImage of jaw.images" alt="">
 											<p>{{no + 1}}). {{jaw.option}}</p>
 										</div>
@@ -92,7 +92,7 @@
 							<small class="font-weight-light"> Time Left</small></h3>
 					</div>
 				</div>
-				<div class="card mb-3">
+				<div class="card mb-3" id="finishPC">
 					<div class="card-body">
 						<button type="button" class="form-control btn btn-success" (click)="FinishOffProses()" name="button">Finish</button>
 						<small class="text-danger">Click this button only if you sure want to finish the test</small>
@@ -101,10 +101,16 @@
 				<div class="card">
 					<div class="card-body">
 						<div class="row">
-							<div class="col-sm-4" *ngFor="let list of ListQuestion, let i = index">
-								<button class="btn text-left form-control mb-2" (click) = "ChangeQuestion(i)" [ngClass] = "{'btn-success' : list.answer != null, 'btn-warning' : list.answer == null || list.answer == ''}" type="button">{{i + 1}}<i class="fa fa-caret-right float-right"></i></button>
+							<div class="col-sm-1" *ngFor="let list of ListQuestion, let i = index">
+								<button class="btn text-left form-control mb-2" (click) = "ChangeQuestion(i)" [ngClass] = "{'btn-success' : list.answer != null, 'btn-warning' : list.answer == null || list.answer == ''}" type="button">{{i + 1}}</button>
 							</div>
 						</div>
+					</div>
+				</div>
+				<div class="card mb-3" id="finishHP">
+					<div class="card-body">
+						<button type="button" class="form-control btn btn-success" (click)="FinishOffProses()" name="button">Finish</button>
+						<small class="text-danger">Click this button only if you sure want to finish the test</small>
 					</div>
 				</div>
 			</div>
