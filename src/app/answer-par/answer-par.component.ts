@@ -60,10 +60,15 @@ export class AnswerParComponent implements OnInit {
           err => console.log(err)
         )
 
-    this.setNumber()
-    this.GetListQuestions()
-    this.GetQuestion()
-    this.GetListAnswer()
+    this.ChangeQuestion(localStorage.getItem('number_quest'))
+    // this.setNumber()
+    // this.GetListQuestions()
+    // this.GetQuestion()
+    // this.GetListAnswer()
+
+    if(this.Question == {}){
+      location.reload
+    }
 
   }
 
@@ -170,6 +175,9 @@ export class AnswerParComponent implements OnInit {
       this.ListQuestion = JSON.parse(localStorage.getItem('arrquestion'))
       this.ListQuestion[localStorage.getItem('number_quest')]['answer'] = this.Question['answer']
       localStorage.setItem('arrquestion', JSON.stringify(this.ListQuestion))
+      var id = parseInt(localStorage.getItem('number_quest')) + 1
+      console.log(id)
+      this.ChangeQuestion(id)
   }
 
   FinishProses(){

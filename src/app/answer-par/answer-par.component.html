@@ -32,10 +32,10 @@
 		<div class="row">
 			<div class="col-md-8 mb-3">
 				<div class="card">
-					<div class="card-body">
+					<div class="card-body" id="soal">
 						<h4 class="text-primary">Soal {{VarNumber}}</h4>
 						<hr>
-						<pre>{{Question.question}}</pre>
+						<p>{{Question.question}}</p>
 						<img src="{{questImage.url}}" *ngFor="let questImage of Question.image" alt="">
 					</div>
 				</div>
@@ -101,7 +101,7 @@
 				<div class="card">
 					<div class="card-body">
 						<div class="row">
-							<div class="col-sm-1" *ngFor="let list of ListQuestion, let i = index">
+							<div class="col-sm-3" *ngFor="let list of ListQuestion, let i = index">
 								<button class="btn text-left form-control mb-2" (click) = "ChangeQuestion(i)" [ngClass] = "{'btn-success' : list.answer != null, 'btn-warning' : list.answer == null || list.answer == ''}" type="button">{{i + 1}}</button>
 							</div>
 						</div>
