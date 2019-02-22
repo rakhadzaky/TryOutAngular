@@ -42,11 +42,21 @@ export class LoginCommitteeComponent implements OnInit {
   }
 
   RegisterUserProses(){
+    this.err_username = ''
+    this.err_code = ''
+    this.err_name = ''
+    this.err_password = ''
+    this.err_regis = ''
     this._auth.RegisterCom(this.Data)
       .subscribe(
         res=>{
           this.regis = res
           console.log(this.regis)
+          this.err_username = res.errors.username
+          this.err_code = res.errors.code
+          this.err_name = res.errors.name
+          this.err_password = res.errors.password
+          this.err_regis = res.message
         },
         err => {
           console.log(err)
