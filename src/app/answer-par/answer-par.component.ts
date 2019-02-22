@@ -56,19 +56,19 @@ export class AnswerParComponent implements OnInit {
             this.timeLeft = this.timeLeft % 60
             this.timeLeftView[2] = Math.round(this.timeLeft)
             this.startTimer()
+            console.log(this.timeLeft)
+            console.log(this.timeLeftView)
           },
           err => console.log(err)
         )
 
-    this.ChangeQuestion(localStorage.getItem('number_quest'))
-    // this.setNumber()
-    // this.GetListQuestions()
-    // this.GetQuestion()
-    // this.GetListAnswer()
+    // this.ChangeQuestion(localStorage.getItem('number_quest'))
+    this.setNumber()
+    this.GetListQuestions()
+    this.GetQuestion()
+    this.GetListAnswer()
 
-    if(this.Question == {}){
-      location.reload
-    }
+    
 
   }
 
@@ -197,7 +197,8 @@ export class AnswerParComponent implements OnInit {
       )
   }
   FinishOffProses(){
-    this._homeParcipantsService.FinishOffAnswer(localStorage.getItem('answer'))
+    if(confirm("Apakah anda yakin ingin menyelesaikan test ? jika sudah selesai tidak akan bisa kembali mengerjakan soal!")){
+      this._homeParcipantsService.FinishOffAnswer(localStorage.getItem('answer'))
       .subscribe(
         res => {
           console.log(res)
@@ -211,6 +212,7 @@ export class AnswerParComponent implements OnInit {
         },
         err => console.log(err)
       )
+    }
   }
 
   LogoutParProses(){
